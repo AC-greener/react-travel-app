@@ -1,0 +1,103 @@
+
+.wrapper {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(241, 241, 241);
+}
+.card {
+  width: 400px;
+  height: 500px;
+  margin: 0 auto;
+  margin-top: 100px;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  flex-direction: column;
+  padding: 50px;
+  border-radius: 4px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 0 8px rgba(0,0,0,.1);
+}
+.input.username {
+  width: 300px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  background-color: (247, 247, 247);
+}
+.button.regist {
+  border: 0px;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  width: 300px;
+  height: 43px;
+  border-radius: 21px;
+  background: #42c02e;
+}
+.shejiao.regist {
+  position: relative;
+  font-size: 12px;
+  color: #b5b5b5;
+}
+.shejiao.regist::after {
+  box-sizing: border-box;
+  content: "";
+  border-top: 1px solid #b5b5b5;
+  display: block;
+  position: absolute;
+  width: 60px;
+  top: 10px;
+  left: 90px;
+}
+.shejiao.regist::before {
+  box-sizing: border-box;
+  content: "";
+  border-top: 1px solid #b5b5b5;
+  display: block;
+  position: absolute;
+  width: 60px;
+  top: 10px;
+  left: -80px;
+}
+.sign-wrapper {
+  cursor: pointer;
+  margin: 20px;
+  font-size: 25px;
+  position: relative;
+  color: #969696;
+}
+.sign-wrapper .signin-btn {
+  margin-right: 20px;
+  position: relative;
+}
+.sign-wrapper .signin-btn.active {
+  color: #ea6f5a;
+}
+.sign-wrapper .signin-btn.active::after {
+  content: "";
+  border-top: 1.5px solid #ea6f5a;
+  display: block;
+  position: absolute;
+  width: 60px;
+  top: 44px;
+  left: -5px;
+}
+.sign-wrapper .regist-btn.active {
+  color: #ea6f5a;
+}
+.sign-wrapper .regist-btn.active::after {
+  content: "";
+  border-top: 1.5px solid #ea6f5a;
+  display: block;
+  position: absolute;
+  width: 60px;
+  top: 46px;
+  left: 84px;
+}
+.sign-wrapper .regist-btn {
+  margin-left: 20px;
+}
+.sign-wrapper .point {
+  position: absolute;
+  top: -6px;
+}
