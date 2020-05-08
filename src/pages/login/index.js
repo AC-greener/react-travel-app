@@ -10,7 +10,9 @@ import { connect } from 'react-redux';
 import {
   WeiboOutlined,
   WechatOutlined,
-  QqOutlined
+  QqOutlined,
+  UserOutlined,
+  LockOutlined
 } from '@ant-design/icons';
 import { Layout, Row, Col,  Input, Button } from 'antd';
 const { Header, Footer, Sider, Content } = Layout;
@@ -18,11 +20,13 @@ class Login extends Component {
   render() {
     return (
       <div className="wrapper">
-          <div style={{position: "absolute", top: '-23px'}}>
-            <svg class="icon" style={{width: '13em', height: '13em'}} aria-hidden="true">
-                <use xlinkHref="#icon-qiongyou"></use>
-            </svg>
-          </div>
+          <Link to="/">
+            <div style={{position: "absolute", top: '-23px'}}>
+                <svg class="icon" style={{width: '13em', height: '13em'}} aria-hidden="true">
+                    <use xlinkHref="#icon-qiongyou"></use>
+                </svg>
+              </div>
+          </Link>
           <div className="card">
             <div className="sign-wrapper">
               <span className="signin-btn active">登录</span>
@@ -31,8 +35,8 @@ class Login extends Component {
                 <span className="regist-btn" style={{color: '#969696'}}>注册</span>
               </Link>
             </div>
-            <Input className="input username" size="large" placeholder="用户名" />
-            <Input style={{width: '300px'}} size="large" placeholder="密码" />
+            <Input className="input username" size="large" prefix={<UserOutlined />} placeholder="用户名" />
+            <Input style={{width: '300px'}} size="large" prefix={<LockOutlined />} placeholder="密码" />
             <Button className="button login" type="primary" block>
               登录
             </Button>

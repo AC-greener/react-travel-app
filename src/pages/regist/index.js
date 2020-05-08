@@ -4,13 +4,13 @@ import './style.css'
 import { Link } from "react-router-dom"
 // import { actionCreators } from './store/index';
 import { connect } from 'react-redux';
-// import {
-//   Hello,
-// } from './style'
 import {
   WeiboOutlined,
   WechatOutlined,
-  QqOutlined
+  QqOutlined,
+  UserOutlined,
+  LockOutlined,
+  PhoneOutlined
 } from '@ant-design/icons';
 import { Layout, Row, Col,  Input, Button } from 'antd';
 const { Header, Footer, Sider, Content } = Layout;
@@ -18,11 +18,13 @@ class Regist extends Component {
   render() {
     return (
       <div className="wrapper">
+        <Link to="/">
           <div style={{position: "absolute", top: '-23px'}}>
-            <svg class="icon" style={{width: '13em', height: '13em'}} aria-hidden="true">
-                <use xlinkHref="#icon-qiongyou"></use>
-            </svg>
-          </div>
+              <svg class="icon" style={{width: '13em', height: '13em'}} aria-hidden="true">
+                  <use xlinkHref="#icon-qiongyou"></use>
+              </svg>
+            </div>
+        </Link>
           <div className="card">
             <div className="sign-wrapper">
               <Link to="/login">
@@ -31,9 +33,9 @@ class Regist extends Component {
               <span className='point'>.</span>
               <span className="regist-btn active">注册</span>
             </div>
-            <Input className="input username" size="large" placeholder="用户名" />
-            <Input style={{width: '300px', marginBottom: '10px'}} size="large" placeholder="手机号" />
-            <Input style={{width: '300px'}} size="large" placeholder="密码" />
+            <Input className="input username" size="large" prefix={<UserOutlined />} placeholder="用户名" />
+            <Input style={{width: '300px', marginBottom: '10px'}} size="large" prefix={<PhoneOutlined />} placeholder="手机号" />
+            <Input style={{width: '300px'}} size="large"  prefix={<LockOutlined />} placeholder="密码" />
             <Button className="button regist" type="primary" block>
               注册
             </Button>

@@ -1,0 +1,36 @@
+.header-nav {
+  height: 60px;
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  right: 0;
+}
+.menu {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+}
+.site-layout-content {
+  padding: 24px;
+  min-height: 280px;
+}
+
+.ant-carousel .slick-slide {
+  text-align: center;
+  height: 520px;
+  line-height: 520px;
+  overflow: hidden;
+}
+
+.ant-carousel .slick-slide h3 {
+  color: #fff;
+}
+.ant-layout-header {
+  background: none;
+}
+.ant-menu-horizontal {
+  border-bottom: none;
+}
+.ant-menu {
+  background: none;
+}
