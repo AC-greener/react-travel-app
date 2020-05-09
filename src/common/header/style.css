@@ -1,9 +1,13 @@
 .header-nav {
-  height: 60px;
+  height: 50px;
+  line-height: 60px;
   position: absolute;
   z-index: 1;
   left: 0;
   right: 0;
+}
+.header-nav.bbs {
+  background-color: rgb(50,50,50, .9);
 }
 .menu {
   color: #fff;
