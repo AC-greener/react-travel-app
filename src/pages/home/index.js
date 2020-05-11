@@ -3,8 +3,9 @@ import { Link } from "react-router-dom"
 import './style.css'
 import { Layout, Menu, Breadcrumb, Carousel } from 'antd';
 import Header from '../../common/header/index'
+import Footer from '../../common/footer/index'
 import HotTopic from './hotTopic'
-const { Content, Footer } = Layout;
+const { Content } = Layout;
 class Home extends Component  {
   render () {
     return (

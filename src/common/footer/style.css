@@ -1,0 +1,31 @@
+
+.footer-top {
+  padding-left: 220px;
+  height: 230px;
+  background: #323232;
+  color: #959595;
+}
+.footer-bottom {
+  padding: 50px;
+  text-align: center;
+  background: #242424;
+  color: #959595;
+}
+ul li:first-child {
+  font-weight: 700;
+  color: silver;
+  border-left: 3px solid green;
+}
+.footer-top ul,li {
+  list-style: none;
+}
+.footer-top ul {
+  padding:  20px;
+  text-align: center;
+}
+.footer-top ul li {
+  width: 100px;
+  cursor: pointer;
+  margin: 15px 0px;
+  font-size: 16px;
+}
