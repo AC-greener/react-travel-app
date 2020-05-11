@@ -50,7 +50,7 @@ class HotTopic extends Component  {
                 style={{ width: 340, height: '270px' }}
                 cover={<img alt="example"src={require('../../static/hot-topic4.jpg')} />}
               >
-                <Meta description="泰国自驾小众路线 这里才是真正的“慢生活”" />
+                <Meta description="泰国自驾小众路线 真正的“慢生活”" />
               </Card>
             </div>
           </Col>
@@ -85,7 +85,7 @@ class HotTopic extends Component  {
                 style={{ width: 340, height:'270px' }}
                 cover={<img alt="example" src={require('../../static/hot-topic7.jpg')} />}
               >
-                <Meta description="写一封情书关于重新来过（2019首尔行）" />
+                <Meta description="写一封情书关于重新来过" />
               </Card>
             </div>
           </Col>
@@ -96,7 +96,7 @@ class HotTopic extends Component  {
                 style={{ width: 340, height:'270px' }}
                 cover={<img alt="example"src={require('../../static/hot-topic8.jpg')} />}
               >
-                <Meta description="神奇建筑在哪里 | 小长假来福建看土楼 （全文完）" />
+                <Meta description="神奇建筑在哪里 | 小长假来福建看土楼 " />
               </Card>
             </div>
           </Col>

@@ -40,9 +40,8 @@
 }
 .ant-carousel .slick-slide {
   text-align: center;
-  height: 360px;
-  line-height: 360px;
-  background: #364d79;
+  height: 470px;
+  line-height: 470px;
   overflow: hidden;
 }
 
@@ -50,7 +49,26 @@
   color: #fff;
 }
 .bbs-carousel {
-  height: 1400px;
   border: 1px solid red;
   margin-top: 50px;
 }
+.c1 {
+  background-color: rgb(249, 250, 252);
+  /* background-color: rgb(37, 77, 110); */
+}
+.c3 {
+  background-color: rgb(249, 250, 252);
+  /* background-color: rgb(20, 22, 24); */
+}
+.c2 {
+  background-color: rgb(249, 250, 252);
+}
+.c4 {
+  background-color: rgb(249, 250, 252);
+  /* background-color: rgb(201, 143, 77); */
+}
+.bbs-carousel img {
+  margin: 0 auto;
+  width: 800px;
+}
+

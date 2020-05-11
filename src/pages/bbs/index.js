@@ -30,7 +30,7 @@ class Bbs extends Component  {
     return (
       <div>
         <Header bbs={ true }/>
-        <Affix  offsetTop={-50}>
+        {/* <Affix  offsetTop={-50}> */}
         <Row className='bbs-wrapper'>
           <div className='bbs-top'>
             <Col  span={4}>
@@ -57,20 +57,20 @@ class Bbs extends Component  {
             </Col>
           </div>
         </Row>
-        </Affix>
+        {/* </Affix> */}
         <Row>
           <Carousel className='bbs-carousel' autoplay>
-            <div>
-              <h3>1</h3>
+            <div className='c1'>
+              <img src={require('../../static/bbs1.jpg')}></img>
             </div>
-            <div>
-              <h3>2</h3>
+            <div className='c2'>
+              <img src={require('../../static/bbs2.jpg')}></img>
             </div>
-            <div>
-              <h3>3</h3>
+            <div className='c3'>
+              <img src={require('../../static/bbs3.jpg')}></img>
             </div>
-            <div>
-              <h3>4</h3>
+            <div className='c4'>
+              <img src={require('../../static/bbs4.jpg')}></img>
             </div>
           </Carousel>
         </Row>
