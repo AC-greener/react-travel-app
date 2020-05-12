@@ -11,7 +11,7 @@
   background: #242424;
   color: #959595;
 }
-ul li:first-child {
+.footer-top ul li:first-child {
   font-weight: 700;
   color: silver;
   border-left: 3px solid green;

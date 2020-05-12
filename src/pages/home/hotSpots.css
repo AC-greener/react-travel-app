@@ -1,0 +1,27 @@
+.hot-spot.card-wrapper {
+  /* padding: 8px 0; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ant-card-meta-description {
+  color: rgba(0, 0, 0, 0.85);
+  font-weight: 500;
+  font-size: 16px;
+  overflow: hidden;
+}
+
+ .ant-card-meta.hot-spot {
+  bottom: 18px;
+  position: absolute;
+  /* margin: -4px 0; */
+  zoom: 1;
+}
+
+.hot-spot .ant-card-meta-description {
+  color: white;
+}
+.spot-card:hover {
+  background-color: #0000006b;
+  transform: scale(1.05);
+}

@@ -5,6 +5,7 @@ import { Layout, Menu, Breadcrumb, Carousel } from 'antd';
 import Header from '../../common/header/index'
 import Footer from '../../common/footer/index'
 import HotTopic from './hotTopic'
+import HotSpots from './hotSpots'
 const { Content } = Layout;
 class Home extends Component  {
   render () {
@@ -27,6 +28,7 @@ class Home extends Component  {
           </Carousel>
           <Content style={{ marginTop: '20px', padding: '0 50px', border: '1px solid red' }}>
             <div className="site-layout-content">
+              <HotSpots />
               <HotTopic />
             </div>
           </Content>

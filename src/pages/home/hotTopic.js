@@ -7,8 +7,8 @@ const style = { background: '#0092ff', padding: '8px 0', border: '1px solid red'
 class HotTopic extends Component  {
   render () {
     return (
-      <div style={{ padding: '20px 80px 80px 50px'}}>
-        <h1 style={{    textAlign: 'center', marginBottom: '25px'}}>热门游记与话题</h1>
+      <div className='hot-topic' style={{ padding: '20px 80px 80px 50px'}}>
+        <h1 style={{ fontSize: '32px', textAlign: 'center', marginBottom: '25px'}}>热门游记与话题</h1>
         <Row justify="space-around" gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
           <Col className="gutter-row" span={6}>
             <div className='card-wrapper'>

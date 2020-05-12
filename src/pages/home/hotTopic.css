@@ -1,6 +1,5 @@
 .card-wrapper {
   padding: 8px 0;
-  border: 1px solid red;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -10,4 +9,9 @@
   font-weight: 500;
   font-size: 16px;
   overflow: hidden;
+}
+.hot-topic .ant-card-hoverable:hover {
+  border-color: rgba(0, 0, 0, 0.09);
+  -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.09);
+  box-shadow: 1px 5px 10px rgba(0, 0, 0, 0.29)
 }
