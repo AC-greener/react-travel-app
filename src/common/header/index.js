@@ -24,18 +24,22 @@ class Heade extends Component  {
             <Menu className="menu" style={{marginLeft: '67px'}} theme="light" mode="horizontal" defaultSelectedKeys={[]}>
               <Menu.Item key="1">目的地</Menu.Item>
               <Menu.Item key="2">酒店/民宿</Menu.Item>
-              <Menu.Item key="6">线路推荐</Menu.Item>
               <Menu.Item key="3">
                 <Link to='/bbs' style={{color: '#fff'}}>
                 旅行论坛
                 </Link>
               </Menu.Item>
               <Menu.Item key="4">
+                <Link to='/recline' style={{color: '#fff'}}>
+                线路推荐
+                </Link>
+              </Menu.Item>
+              <Menu.Item key="5">
                 <Link to='/login' style={{color: '#fff'}}>
                 登录
                 </Link>
               </Menu.Item>
-              <Menu.Item key="5">
+              <Menu.Item key="6">
                 <Link to='/regist' style={{color: '#fff'}}>
                 注册
                 </Link>

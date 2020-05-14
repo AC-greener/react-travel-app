@@ -12,7 +12,7 @@ class Home extends Component  {
   render () {
     return (
       <Layout className="layout">
-          <Header />
+          <Header bbs={ true } />
           <Carousel  autoplay>
             <div>
               <img src={require('../../static/c1.jpg')}></img>

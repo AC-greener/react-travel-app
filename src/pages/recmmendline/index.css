@@ -1,0 +1,29 @@
+.rec-line.card-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.rec-line .ant-card-meta-title{
+  color: rgba(0, 0, 0, 0.85);
+  font-weight: 600;
+  font-size: 16px;
+  overflow: hidden
+}
+.rec-line .ant-card-meta-description{
+  color: #636363;
+  font-family: \5b8b\4f53,sans-serif;
+ }
+.rec-line-card .card-day {
+  font-family: HelveticaNeue-Light;
+  position: absolute;
+  color: white;
+  top: 135px;
+  font-size: 50px;
+  font-weight: 400;
+}
+.rec-line-card .card-day span {
+  font-size: 20px;
+  margin-left: 11px;
+}
+
