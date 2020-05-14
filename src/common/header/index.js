@@ -24,6 +24,7 @@ class Heade extends Component  {
             <Menu className="menu" style={{marginLeft: '67px'}} theme="light" mode="horizontal" defaultSelectedKeys={[]}>
               <Menu.Item key="1">目的地</Menu.Item>
               <Menu.Item key="2">酒店/民宿</Menu.Item>
+              <Menu.Item key="6">线路推荐</Menu.Item>
               <Menu.Item key="3">
                 <Link to='/bbs' style={{color: '#fff'}}>
                 旅行论坛

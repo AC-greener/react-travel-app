@@ -1,0 +1,28 @@
+.hot-hotel.card-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hot-hotel .ant-card-meta-title{
+  color: rgba(0, 0, 0, 0.85);
+  font-weight: 600;
+  font-size: 16px;
+  overflow: hidden
+}
+.hotel .price{
+  font-size: 14px;
+  margin: 10px 0px;
+  color: #ff4950;;
+}
+.hotel .price{
+  font-size: 16px;
+}
+.hotel .reserve-bt{
+  background: #ff4950;
+  color: white;
+  margin-left: 60px;
+}
+.hotel .ant-btn:hover, .ant-btn:focus {
+  border-color: #ff4950;
+}

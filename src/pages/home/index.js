@@ -6,6 +6,7 @@ import Header from '../../common/header/index'
 import Footer from '../../common/footer/index'
 import HotTopic from './hotTopic'
 import HotSpots from './hotSpots'
+import HotHotel from './hotHotel'
 const { Content } = Layout;
 class Home extends Component  {
   render () {
@@ -30,6 +31,7 @@ class Home extends Component  {
             <div className="site-layout-content">
               <HotSpots />
               <HotTopic />
+              <HotHotel/>
             </div>
           </Content>
           <Footer style={{ textAlign: 'center' }}> Created by tongtong 2020</Footer>
