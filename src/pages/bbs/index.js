@@ -29,7 +29,7 @@ class Bbs extends Component  {
   render () {
     return (
       <div>
-        <Header bbs={ true }/>
+        <Header activeNav="3" bbs={ true }/>
         {/* <Affix  offsetTop={-50}> */}
         <Row className='bbs-wrapper'>
           <div className='bbs-top'>
