@@ -52,6 +52,42 @@ class RecommendLine extends Component  {
                 </div>
               </Col>
             </Row>
+            <Row style={{ padding: '0 250px'}} justify="space-around" gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
+              <Col className="gutter-row" span={8}>
+                <div className='card-wrapper'>
+                  <Card className='rec-line-card' style={{width: 310, height: '370px'}}
+                    hoverable
+                    cover={<img alt="example"  srcSet  src={require('../../static/recoline4.jpg')} />}
+                  >
+                    <div className='card-day'>12<span>天</span></div>
+                    <Meta className='rec-line' title='巴黎罗马巴塞罗那'   description="香港·上海·巴黎·罗马·梵蒂冈·巴塞罗那" />
+                  </Card>
+                </div>
+              </Col>
+              <Col className="gutter-row" span={8}>
+                <div className='card-wrapper'>
+                  <Card className='rec-line-card' style={{width: 310, height: '370px'}}
+                    hoverable
+                    cover={<img alt="example"  srcSet  src={require('../../static/recoline5.jpg')} />}
+                  >
+                    <div className='card-day'>13<span>天</span></div>
+                    <Meta className='rec-line' title='魔芋菌的奥捷行程'   description="北京·布拉格·库特纳霍拉·捷克克鲁姆洛夫·萨尔茨堡·哈尔施塔特·维也纳" />
+                  </Card>
+                </div>
+              </Col>
+
+              <Col className="gutter-row" span={8}>
+                <div className='card-wrapper'>
+                  <Card className='rec-line-card' style={{width: 310, height: '370px'}}
+                    hoverable
+                    cover={<img alt="example"  srcSet  src={require('../../static/recoline6.jpg')} />}
+                  >
+                    <div className='card-day'>12<span>天</span></div>
+                    <Meta className='rec-line' title='湖南之旅' description="成都·长沙·凤凰·湘西·张家界市·张家界风景区" />
+                  </Card>
+                </div>
+              </Col>
+            </Row>
           </div>
         </Layout>
     )
