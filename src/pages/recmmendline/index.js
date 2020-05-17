@@ -24,7 +24,7 @@ class RecommendLine extends Component  {
                       hoverable
                       cover={<img alt="example"  srcSet  src={require('../../static/recoline1.jpg')} />}
                     >
-                      <div className='card-day'>10<span>天</span></div>
+                      <div className='card-day'>6<span>天</span></div>
                       <Meta className='rec-line' title='英国-伦敦-爱丁堡'   description="上海·伦敦·牛津·剑桥·爱丁堡·苏格兰高地·苏格兰·因弗尼斯·尼斯湖·威廉堡·巴斯·巨石阵" />
                     </Card>
                   </Link>
