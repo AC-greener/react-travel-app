@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from "react-router-dom"
 import { Row, Col,Card, Button } from 'antd';
 import './hotHotel.css'
 const { Meta } = Card;

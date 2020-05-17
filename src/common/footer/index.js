@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './style.css'
-import { Layout, Menu, Row, Col } from 'antd';
+import {  Row, Col } from 'antd';
 class Footer extends Component {
   render () {
     return (

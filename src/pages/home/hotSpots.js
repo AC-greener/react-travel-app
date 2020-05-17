@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import { Link } from "react-router-dom"
 import { Row, Col,Card } from 'antd';
 import './hotSpots.css'
 const { Meta } = Card;
-const style = { background: '#0092ff', padding: '8px 0', border: '1px solid red', };
 class HotTopic extends Component  {
   render () {
     return (
