@@ -407,10 +407,18 @@ class RecLineDetail extends Component  {
       return axios.get ('/table.json').then (res => {
         let index = parseInt(this.props.match.params.id) - 1
         let result = res.data.data[index].tabled
-        dispatch ({type: 'get_recline_data', data: result, img: res.data.data[index].img})
+        dispatch ({type: 'get_recline_data', data: result})
       })
     }
     store.dispatch (action)
+  // axios.get('http://127.0.0.1:7001/')
+  //   .then(res => {
+  //     console.log(typeof res.data[0].data)
+  //     console.log(JSON.parse(res.data[0].data)[0])
+  //   })
+  //   .catch(err => {
+  //     console.log(err)
+  //   })
   }
   render () {
     let text = ''

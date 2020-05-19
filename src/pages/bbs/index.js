@@ -1,7 +1,7 @@
 import React, { Component, useState} from 'react';
-import { Link } from "react-router-dom"
 import './style.css'
-import { Row, Col, Layout, Affix, Menu, Dropdown, Button, Carousel } from 'antd';
+import MessageBoard from './messageBoard'
+import { Row, Col, Menu, Dropdown, Button, Carousel,Tabs} from 'antd';
 import { FormOutlined } from '@ant-design/icons';
 import Header from '../../common/header/index'
 
@@ -24,8 +24,10 @@ const menu = (
     </Menu.Item>
   </Menu>
 )
+const { TabPane } = Tabs
 
 class Bbs extends Component  {
+
   render () {
     return (
       <div>
@@ -40,7 +42,7 @@ class Bbs extends Component  {
             </Col>
             <Col  span={5}>
             <div className='desctitle'>
-                <strong class="descshare">分享</strong>
+                <strong className="descshare">分享</strong>
                 <i>.</i>
                 <strong>结伴</strong>
                 <i>.</i>
@@ -74,9 +76,38 @@ class Bbs extends Component  {
             </div>
           </Carousel>
         </Row>
+        <Row>
+          <Col span={16} style={{border: '1px solid red'}} offset={4}>
+            <Tabs className='bbs-tabs' style={{border: '1px solid black'}} defaultActiveKey="2">
+              <TabPane
+                tab={
+                  <span>
+                    在线留言
+                  </span>
+                }
+                key="1"
+              >
+                Tab 1
+              </TabPane>
+              <TabPane
+                tab={
+                  <span>
+                    结伴出行
+                  </span>
+                }
+                key="2"
+              >
+                Tab 2
+              </TabPane>
+            </Tabs>
+          </Col>
+        </Row>
+        <Row>
+          <MessageBoard/>
+        </Row>
       </div>
     )
   }
 }
 
-export default Bbs;
+export default Bbs

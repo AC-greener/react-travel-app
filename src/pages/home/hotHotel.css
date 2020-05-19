@@ -23,6 +23,6 @@
   color: white;
   margin-left: 60px;
 }
-.hotel .ant-btn:hover, .ant-btn:focus {
+.hotel .ant-btn:hover, .hotel .ant-btn:focus {
   border-color: #ff4950;
 }

@@ -49,26 +49,56 @@
   color: #fff;
 }
 .bbs-carousel {
-  border: 1px solid red;
   margin-top: 50px;
 }
 .c1 {
   background-color: rgb(249, 250, 252);
-  /* background-color: rgb(37, 77, 110); */
 }
 .c3 {
   background-color: rgb(249, 250, 252);
-  /* background-color: rgb(20, 22, 24); */
 }
 .c2 {
   background-color: rgb(249, 250, 252);
 }
 .c4 {
   background-color: rgb(249, 250, 252);
-  /* background-color: rgb(201, 143, 77); */
 }
 .bbs-carousel img {
   margin: 0 auto;
   width: 800px;
 }
 
+.bbs-tabs .ant-tabs-nav-scroll {
+  overflow: hidden;
+  white-space: nowrap;
+  display: flex;
+  justify-content: space-around;
+}
+.bbs-tabs .ant-tabs-tab {
+  margin: 0 162px 0 0;
+}
+.message-board h2 {
+  text-align: center;
+  font-size: 30px;
+  margin: 40px;
+}
+
+.form-wrapper {
+  margin: 0 auto;
+  width: 800px;
+  margin-bottom: 200px;
+  display: flex;
+  justify-content: center;
+  background-size: 140px;
+  border-radius: 8px;
+}
+
+.bbs-form {
+  width: 100%;
+  background-color: #fff;
+  margin: 20px;
+  border-radius: 8px;
+  padding: 30px;
+}
+
+ 

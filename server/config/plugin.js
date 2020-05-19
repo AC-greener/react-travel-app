@@ -11,3 +11,10 @@ exports.mysql = {
   enable: true,
   package: 'egg-mysql',
 };
+exports.cors = {
+  enable: true,
+  package: 'egg-cors',
+};
+// exports.security = {
+//   domainWhiteList: [ 'http://localhost:3000'],
+// };
