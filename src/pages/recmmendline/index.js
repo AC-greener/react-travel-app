@@ -11,7 +11,7 @@ class RecommendLine extends Component  {
           <Header activeNav="4" bbs={ true }/>
           <Carousel  autoplay>
             <div style={{ width: '100%'}}>
-              <img src={require('../../static/bg-recolinejpg.jpg')}></img>
+              <img src={require('../../static/bg-recolinejpg.jpg')} alt='图片未加载'></img>
             </div>
           </Carousel>
           <div className='' style={{ padding: '20px 80px 20px 50px'}}>

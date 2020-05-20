@@ -1,29 +1,10 @@
-import React, { Component, useState} from 'react';
+import React, { Component } from 'react';
 import './style.css'
 import MessageBoard from './messageBoard'
-import { Row, Col, Menu, Dropdown, Button, Carousel,Tabs} from 'antd';
+import { Row, Col, Button, Carousel,Tabs} from 'antd';
 import { FormOutlined } from '@ant-design/icons';
 import Header from '../../common/header/index'
 
-const menu = (
-  <Menu>
-    <Menu.Item>
-      <a target="_blank" rel="noopener noreferrer" href="">
-        写游记
-      </a>
-    </Menu.Item>
-    <Menu.Item>
-      <a target="_blank" rel="noopener noreferrer" href="/">
-        找同伴
-      </a>
-    </Menu.Item>
-    <Menu.Item>
-      <a target="_blank" rel="noopener noreferrer" href="">
-        去提问
-      </a>
-    </Menu.Item>
-  </Menu>
-)
 const { TabPane } = Tabs
 
 class Bbs extends Component  {
@@ -50,12 +31,12 @@ class Bbs extends Component  {
               </div>
             </Col>
             <Col span={4} offset={10}>
-              <Dropdown overlay={menu} placement="bottomCenter">
+              <a href='#col-message-board'>
                 <Button className='write-article'>
                   <FormOutlined />
                   发新帖
                 </Button>
-              </Dropdown>
+              </a>
             </Col>
           </div>
         </Row>
@@ -63,16 +44,16 @@ class Bbs extends Component  {
         <Row>
           <Carousel className='bbs-carousel' autoplay>
             <div className='c1'>
-              <img src={require('../../static/bbs1.jpg')}></img>
+              <img src={require('../../static/bbs1.jpg')} alt='图片未加载'></img>
             </div>
             <div className='c2'>
-              <img src={require('../../static/bbs2.jpg')}></img>
+              <img src={require('../../static/bbs2.jpg')} alt='图片未加载'></img>
             </div>
             <div className='c3'>
-              <img src={require('../../static/bbs3.jpg')}></img>
+              <img src={require('../../static/bbs3.jpg')} alt='图片未加载'></img>
             </div>
             <div className='c4'>
-              <img src={require('../../static/bbs4.jpg')}></img>
+              <img src={require('../../static/bbs4.jpg')} alt='图片未加载'></img>
             </div>
           </Carousel>
         </Row>

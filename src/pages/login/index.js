@@ -2,11 +2,8 @@ import React, { Component } from 'react';
 import { Link } from "react-router-dom"
 import 'antd/dist/antd.css';
 import './style.css'
-import { actionCreators } from './store/index';
 import { connect } from 'react-redux';
-// import {
-//   Hello,
-// } from './style'
+
 import {
   WeiboOutlined,
   WechatOutlined,
@@ -14,15 +11,14 @@ import {
   UserOutlined,
   LockOutlined
 } from '@ant-design/icons';
-import { Layout, Row, Col,  Input, Button } from 'antd';
-const { Header, Footer, Sider, Content } = Layout;
+import {  Input, Button } from 'antd';
 class Login extends Component {
   render() {
     return (
       <div className="wrapper">
           <Link to="/">
             <div style={{position: "absolute", top: '-23px'}}>
-                <svg class="icon" style={{width: '13em', height: '13em'}} aria-hidden="true">
+                <svg className="icon" style={{width: '13em', height: '13em'}} aria-hidden="true">
                     <use xlinkHref="#icon-qiongyou"></use>
                 </svg>
               </div>
@@ -55,9 +51,7 @@ class Login extends Component {
 }
 
 const mapStateProps = (state) => {
-  console.log(state.get("login").focused)
   return {
-      focused: state.get("login")["focused"],
   }
 }
 
@@ -66,7 +60,6 @@ const mapStateProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
       handleInputBlur() {
-          dispatch(actionCreators.searchBlur());
       }
   }
 }
