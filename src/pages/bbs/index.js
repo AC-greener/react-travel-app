@@ -1,19 +1,51 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import axios from 'axios'
 import './style.css'
 import MessageBoard from './messageBoard'
-import { Row, Col, Button, Carousel,Tabs} from 'antd';
-import { FormOutlined } from '@ant-design/icons';
+import { Row, Col, Button, Carousel, Tabs, Affix} from 'antd'
+import { FormOutlined } from '@ant-design/icons'
 import Header from '../../common/header/index'
-
+import JiebanList from './jieban'
 const { TabPane } = Tabs
 
 class Bbs extends Component  {
-
+  constructor (props) {
+    super(props)
+    this.state = {
+      jiebanlist: [],
+      liuyanlist: []
+    }
+  }
+  componentDidMount() {
+    this.getMessageBoard()
+  }
+  getMessageBoard () {
+    axios.get('http://127.0.0.1:7002/api/message')
+    .then(res => {
+      console.log(res.data)
+      const jiebanlist = []
+      const liuyanlist = []
+      res.data.forEach(item => {
+        if (item.iscompanion) {
+          jiebanlist.push(item)
+        } else {
+          liuyanlist.push(item)
+        }
+      })
+      this.setState({
+        jiebanlist,
+        liuyanlist
+      })
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  }
   render () {
     return (
       <div>
         <Header activeNav="3" bbs={ true }/>
-        {/* <Affix  offsetTop={-50}> */}
+        <Affix  offsetTop={-50}>
         <Row className='bbs-wrapper'>
           <div className='bbs-top'>
             <Col  span={4}>
@@ -40,7 +72,7 @@ class Bbs extends Component  {
             </Col>
           </div>
         </Row>
-        {/* </Affix> */}
+        </Affix>
         <Row>
           <Carousel className='bbs-carousel' autoplay>
             <div className='c1'>
@@ -58,8 +90,8 @@ class Bbs extends Component  {
           </Carousel>
         </Row>
         <Row>
-          <Col span={16} style={{border: '1px solid red'}} offset={4}>
-            <Tabs className='bbs-tabs' style={{border: '1px solid black'}} defaultActiveKey="2">
+          <Col span={16}  offset={4}>
+            <Tabs className='bbs-tabs'  defaultActiveKey="2">
               <TabPane
                 tab={
                   <span>
@@ -78,7 +110,7 @@ class Bbs extends Component  {
                 }
                 key="2"
               >
-                Tab 2
+                <JiebanList list={this.state.jiebanlist}/>
               </TabPane>
             </Tabs>
           </Col>

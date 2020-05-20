@@ -1,14 +1,45 @@
 'use strict';
 
-const Controller = require('egg').Controller;
+const Controller = require('egg').Controller
 
 class HomeController extends Controller {
   async index() {
-    const client1 = await this.app.mysql.select('table')
-    const { ctx } = this;
-    ctx.body = JSON.stringify(client1);
-    ctx.set('content-type', 'application/json');
+    const data = await this.app.mysql.select('table')
+    const { ctx } = this
+    ctx.body = JSON.stringify(data)
+    ctx.set('content-type', 'application/json')
+  }
+  async postmessage() {
+    const { ctx } = this
+    ctx.request.body.startday = new Date(ctx.request.body.startday)
+    await this.app.mysql.insert('messageboard', ctx.request.body)
+    console.log('插入成功')
+    ctx.body = {
+      data: 'ok'
+    }
+    ctx.set('content-type', 'application/json')
+  }
+  async getmessage() {
+    const { ctx } = this
+    const data = await this.app.mysql.select('messageboard')
+    ctx.body = data
+    ctx.set('content-type', 'application/json')
+  }
+  async getreply() {
+    const { ctx } = this
+    const data = await this.app.mysql.select('messageboard')
+    ctx.body = data
+    ctx.set('content-type', 'application/json')
+  }
+  async postreply() {
+    const { ctx } = this
+    await this.app.mysql.insert('reply', ctx.request.body)
+    console.log('插入成功')
+    ctx.body = {
+      data: 'ok'
+    }
+    ctx.set('content-type', 'application/json')
   }
 }
 
-module.exports = HomeController;
+module.exports = HomeController

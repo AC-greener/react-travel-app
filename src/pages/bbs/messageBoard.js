@@ -21,28 +21,31 @@ class MessageBoard extends React.Component  {
     }
   }
   onChange(checked) {
-    console.log(checked)
     this.setState({
       isCompanion: checked
     })
   }
-
+  postMeaageBoard(values) {
+    axios.post('http://127.0.0.1:7002/api/message', values)
+    .then(res => {
+      message.success('提交成功！')
+      console.log(res)
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  }
   handleSubmit = e => {
     e.preventDefault()
     this.props.form.validateFields((err, values) => {
       if (!err) {
         console.log('Received values of form: ', values)
-        axios.post('http:/127.0.0.1:7001/api/message', values)
-        .then(res => {
-          message.success('提交成功！')
-          console.log(res)
-        })
-        .catch(err => {
-          console.log(err)
-        })
+        // console.log(values.startday.toString())
+        // values.startday = values.startday.toString()
+        this.postMeaageBoard( values)
       }
-    });
-  };
+    })
+  }
   handleFormFail() {
 
   }
@@ -78,11 +81,11 @@ class MessageBoard extends React.Component  {
                 )}
               </Form.Item>
               <Form.Item
+                name='iscompanion'
                 label="结伴出游">
-                  {getFieldDecorator('isCompanion', {
-                    rules: [{ required: true, message: ' ' }],
+                  {getFieldDecorator('iscompanion', {
                     })(
-                      <Switch onChange={(checked) => {this.onChange(checked)}} />
+                      <Switch defaultChecked={false} onChange={(checked) => {this.onChange(checked)}} />
                   )}
               </Form.Item>
               {
