@@ -12,7 +12,7 @@ class HotTopic extends Component  {
             <div className='card-wrapper'>
               <Card className='spot-card' style={{width: 240, height: '270px'}}
                 hoverable
-                cover={<img alt="example" style={{height: '270px'}} srcSet  src={require('../../static/spot0.png')} />}
+                cover={<img alt="example" style={{height: '270px'}}   src={require('../../static/spot0.png')} />}
               >
                 <Meta className='hot-spot'  description="洛克菲勒观景台" />
               </Card>
@@ -22,7 +22,7 @@ class HotTopic extends Component  {
             <div className='hot-spot card-wrapper'>
               <Card className='spot-card'  style={{width: 240, height: '270px'}}
                 hoverable
-                cover={<img alt="example" style={{height: '270px'}} srcSet  src={require('../../static/spot1.png')} />}
+                cover={<img alt="example" style={{height: '270px'}}    src={require('../../static/spot1.png')} />}
               >
                 <Meta className='hot-spot'  description="碎片大厦" />
               </Card>
@@ -32,7 +32,7 @@ class HotTopic extends Component  {
             <div className='card-wrapper'>
               <Card className='spot-card' style={{width: 240, height: '270px'}}
                 hoverable
-                cover={<img alt="example" style={{height: '270px'}} srcSet  src={require('../../static/spot2.png')} />}
+                cover={<img alt="example" style={{height: '270px'}}    src={require('../../static/spot2.png')} />}
               >
                 <Meta className='hot-spot'  description="太平山" />
               </Card>
@@ -42,7 +42,7 @@ class HotTopic extends Component  {
             <div className='card-wrapper'>
               <Card  className='spot-card' style={{width: 240, height: '270px'}}
                 hoverable
-                cover={<img alt="example" style={{height: '270px'}} srcSet  src={require('../../static/spot3.png')} />}
+                cover={<img alt="example" style={{height: '270px'}}    src={require('../../static/spot3.png')} />}
               >
                 <Meta className='hot-spot'  description="象山" />
               </Card>
@@ -54,7 +54,7 @@ class HotTopic extends Component  {
             <div className='card-wrapper'>
               <Card className='spot-card' style={{width: 240, height: '270px'}}
                 hoverable
-                cover={<img alt="example" style={{height: '270px'}} srcSet  src={require('../../static/spot4.png')} />}
+                cover={<img alt="example" style={{height: '270px'}}    src={require('../../static/spot4.png')} />}
               >
                 <Meta className='hot-spot'  description="蒙帕纳斯大楼" />
               </Card>
@@ -64,7 +64,7 @@ class HotTopic extends Component  {
             <div className='card-wrapper'>
               <Card className='spot-card'  style={{width: 240, height: '270px'}}
                 hoverable
-                cover={<img alt="example" style={{height: '270px'}} srcSet  src={require('../../static/spot5.png')} />}
+                cover={<img alt="example" style={{height: '270px'}}    src={require('../../static/spot5.png')} />}
               >
                 <Meta className='hot-spot'  description="马六甲" />
               </Card>
@@ -74,7 +74,7 @@ class HotTopic extends Component  {
             <div className='card-wrapper'>
               <Card className='spot-card' style={{width: 240, height: '270px'}}
                 hoverable
-                cover={<img alt="example" style={{height: '270px'}} srcSet  src={require('../../static/spot6.png')} />}
+                cover={<img alt="example" style={{height: '270px'}}    src={require('../../static/spot6.png')} />}
               >
                 <Meta className='hot-spot'  description="马丘比丘" />
               </Card>
@@ -84,7 +84,7 @@ class HotTopic extends Component  {
             <div className='card-wrapper'>
               <Card className='spot-card' style={{width: 240, height: '270px'}}
                 hoverable
-                cover={<img alt="example" style={{height: '270px'}} srcSet  src={require('../../static/spot7.png')} />}
+                cover={<img alt="example" style={{height: '270px'}}    src={require('../../static/spot7.png')} />}
               >
                 <Meta className='hot-spot'  description="不夜城香港" />
               </Card>

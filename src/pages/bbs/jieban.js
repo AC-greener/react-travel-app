@@ -1,5 +1,5 @@
 import React from 'react'
-import { PageHeader,  Col, Tag, Typography, Row, Icon, Form, Input, Button } from 'antd'
+import { PageHeader,  Col, Tag, Typography, Row, Form, Input, Button } from 'antd'
 import axios from 'axios'
 const { Paragraph } = Typography
 
@@ -55,7 +55,7 @@ const Content = ({ children, extraContent }) => {
       })
   }
   render() {
-    const { getFieldDecorator, setFieldsValue } = this.props.form
+    const { getFieldDecorator } = this.props.form
     return (
       <div>
         {

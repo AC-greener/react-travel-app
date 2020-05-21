@@ -19,7 +19,7 @@ class RecommendLine extends Component  {
             <Row style={{ padding: '0 250px'}} justify="space-around" gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
               <Col className="gutter-row" span={8}>
                 <div className='card-wrapper'>
-                  <Link to='/recline/detail/1'>
+                  <Link to={'/recline/detail/1'}>
                     <Card className='rec-line-card' style={{width: 310, height: '370px'}}
                       hoverable
                       cover={<img alt="example"  srcSet  src={require('../../static/recoline1.jpg')} />}

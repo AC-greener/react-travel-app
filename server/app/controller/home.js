@@ -31,6 +31,7 @@ class HomeController extends Controller {
     ctx.body = data
     ctx.set('content-type', 'application/json')
   }
+
   async postreply() {
     const { ctx } = this
     await this.app.mysql.insert('reply', ctx.request.body)
@@ -38,6 +39,18 @@ class HomeController extends Controller {
     ctx.body = {
       data: 'ok'
     }
+    ctx.set('content-type', 'application/json')
+  }
+  async hotelDetail() {
+    const { ctx } = this
+    const data = await this.app.mysql.select('hotel')
+    ctx.body = data
+    ctx.set('content-type', 'application/json')
+  }
+  async hotelList() {
+    const { ctx } = this
+    const data = await this.app.mysql.select('hotellist')
+    ctx.body = data
     ctx.set('content-type', 'application/json')
   }
 }

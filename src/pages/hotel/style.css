@@ -40,3 +40,9 @@
   justify-content: center;
   align-items: center;
 }
+
+.content strong {
+  margin-right: 100px;
+  font-weight: 600;
+  font-size: 16px;
+}
