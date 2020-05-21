@@ -23,7 +23,11 @@ class Heade extends Component  {
             </div>
             <Menu className="menu" style={{marginLeft: '67px'}} theme="light" mode="horizontal" defaultSelectedKeys={[this.props.activeNav]}>
               <Menu.Item key="1">目的地</Menu.Item>
-              <Menu.Item key="2">酒店/民宿</Menu.Item>
+              <Menu.Item key="2">
+              <Link to='/hotel' style={{color: '#fff'}}>
+                酒店/民宿
+                </Link>
+              </Menu.Item>
               <Menu.Item key="3">
                 <Link to='/bbs' style={{color: '#fff'}}>
                 旅行论坛

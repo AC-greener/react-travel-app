@@ -8,15 +8,20 @@ import Home from './pages/home/index'
 import Bbs from './pages/bbs/index'
 import RecommendLineDetail from './pages/reclinedetail/index'
 import RecommendLine from './pages/recmmendline/index'
+import Hotel from './pages/hotel/index'
+import HotelDetail from './pages/hoteldetail/index'
+
+
 import store from './store/index'
 const App: React.FC = () => {
   return (
     <Provider store={store}>  
       <BrowserRouter>
         <div className="App">
-          {/* <Header /> */}
           <Route path='/' exact component={ Home } />
           <Route path='/bbs' exact component={ Bbs }></Route>
+          <Route path='/hotel' exact component={ Hotel }></Route>
+          <Route path='/hotel/detail/:id' exact component={ HotelDetail }></Route>
           <Route path='/recline' exact component={ RecommendLine }></Route>
           <Route path='/recline/detail/:id' exact component={ RecommendLineDetail }></Route>
           <Route path='/login' exact component={ Login }></Route>
