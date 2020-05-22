@@ -1,11 +1,13 @@
 import React from 'react'
 import './style.css'
 import Header from '../../common/header/index'
-import { Layout, Row, Col,Typography, PageHeader } from 'antd'
+import { Layout, Row, Col,Typography, PageHeader,  Table, Button, DatePicker, message,} from 'antd'
 import axios from 'axios'
+import moment from 'moment';
 
 const {  Content } = Layout;
 const { Paragraph } = Typography
+const { RangePicker,} = DatePicker;
 const PageContent = ({ children, extraContent }) => {
   return (
     <Row className="content" type="flex">
@@ -23,22 +25,55 @@ const PageContent = ({ children, extraContent }) => {
     </Row>
   );
 }
+
+const dateFormat = 'YYYY/MM/DD';
 class HotelDetail extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      hotelDetail: {}
+      hotelDetail: {},
+      startTime1: '2020/06/01',
+      endTime1: '2020/06/11',
+      startTime2: '2020/07/01',
+      endTime2: '2020/07/08'
     }
+    this.orderHotel = this.orderHotel.bind(this)
   }
   componentDidMount () {
     this.getHotelDetail()
   }
-  getHotelDetail() {
-    axios.get('/hoteldetail.json')
+  handleTimePicker(data) {
+    this.setState({
+      startTime:new Date(data[0]._d).toLocaleString(),
+      endTime:new Date(data[1]._d).toLocaleString()
+    })
+  }
+  orderHotel(data, text) {
+    console.log(data, )
+    const hotelInfo = {}
+    hotelInfo.hotelname = this.state.hotelDetail.hotelname
+    hotelInfo.people = data.people+''
+    hotelInfo.price = data.price+''
+    hotelInfo.roomtype = data.roomtype
+    hotelInfo.starttime = data.time[0]
+    hotelInfo.endtime = data.time[1]
+    hotelInfo.username = 'old zhang'
+    hotelInfo.userid = 2
+    console.log(hotelInfo)
+    axios.post('http://127.0.0.1:7001/api/order/hotel', hotelInfo)
       .then(res => {
-        console.log(res.data)
+        message.success('预约成功')
+        console.log(res)
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }
+  getHotelDetail() {
+    axios.get('http://127.0.0.01:7001/api/hotel/detail')
+      .then(res => {
         this.setState({
-          hotelDetail: res.data
+          hotelDetail: res.data[0]
         })
       })
       .catch(err => {
@@ -46,6 +81,91 @@ class HotelDetail extends React.Component {
       })
   }
   render() {
+    const columns = [
+      {
+        title: '房型',
+        align: 'center',
+        dataIndex: 'roomtype',
+        key: 'roomtype',
+        // render: text => <a>大床房</a>,
+      },
+      {
+        title: '今日房价',
+        align: 'center',
+        dataIndex: 'price',
+        key: 'price',
+      },
+      {
+        title: '房屋信息',
+        dataIndex: 'roominfo',
+        key: 'roominfo',
+        render: roominfo => (
+          <div>
+            {
+              roominfo.map((item, index) => {
+                return (
+                  <div key={index}>{item}</div>
+                )
+              })
+            }
+          </div>
+        )
+      },
+      {
+        title: '入住人数',
+        align: 'center',
+        key: 'people',
+        dataIndex: 'people',
+        render: people => (
+          <span>
+              {people}
+          </span>
+        ),
+      },
+      {
+        title: '入住时间',
+        key: 'time',
+        align: 'center',
+        dataIndex: 'time',
+        render: (time) => (
+          <span>
+               <RangePicker
+                defaultValue={[moment(time[0], dateFormat), moment(time[1], dateFormat)]}
+                format={dateFormat}
+               onChange={(d) => this.handleTimePicker(d)}/>
+          </span>
+        ),
+      },
+      {
+        title: '操作',
+        align: 'center',
+        key: 'opera',
+        render: (text, row) => (
+          <div>
+            <Button onClick={() => this.orderHotel(row, text)}>立即预约</Button>
+          </div>
+        ),
+      },
+    ];
+    
+    const data = [
+      {
+        key: '1',
+        roomtype: '单人间',
+        price: 128,
+        roominfo: ['免费WIFI', '18平米','淋浴', '1张单人床'],
+        time: ['2020/06/01','2020/06/21'],
+        people: 2,
+      },
+      {
+        key: '2',
+        roomtype: '双人间',
+        price: 218,
+        time: ['2020/06/01','2020/06/08'],
+        roominfo: ['免费WIFI', '26平米', '淋浴', '1张双人床, 1张单人床'],
+        people: '2~3',
+      }
+    ]
     return (
       <Layout style={{ background: 'rgb(255, 255, 255)'}} className='h'>
         <Header activeNav="2" bbs = {true}/>
@@ -87,7 +207,7 @@ class HotelDetail extends React.Component {
               border: '1px solid rgb(235, 237, 240)',
               margin: '15px'
             }}
-            title="北京和园国际青年客栈"
+            title={this.state.hotelDetail.hotelname}
           >
             <PageContent>
               <div className="content">
@@ -97,7 +217,7 @@ class HotelDetail extends React.Component {
                     <svg style={{width: '16px', hright: '16px'}} className="icon" aria-hidden="true">
                         <use xlinkHref="#icon-weizhi"></use>
                     </svg>&nbsp;: &nbsp;
-                    文慧园路志强北园一号
+                    {this.state.hotelDetail.location}
                   </Col>
                 </Row>
               </div>
@@ -114,17 +234,24 @@ class HotelDetail extends React.Component {
           <PageContent>
             <div className="content">
               <Paragraph>
-                北京和园国际青年客栈位于文慧园路志强北园一号，紧邻地铁2号线积水潭站，交通便利、环境优美。
-                <br/>
-                北京和园国际青年客栈是一家四合院式建筑的青年旅舍，院落宽敞，四面房屋各处独立，彼此之间有游廊连接，通风采光。院内植被繁茂、鸟语花香。
-                <br/>
-                这里有舒适的客房、温馨的酒吧。旅舍客房简洁、舒适，每间客房都配有空调、暖气，带有通户外的窗户。
-                <br/>
-                餐厅供应中式和西式食品；酒吧提供浓香的咖啡、丰富的酒水，让每一个客人都能得到优质的服务，在这繁华的都市里分享到大自然赐予的一片美好天地。
-                <br/>
-                酒店电话：010-62277138
+              <div dangerouslySetInnerHTML={{ __html: this.state.hotelDetail.hotelinfo }}>
+              </div>
               </Paragraph>
               </div>
+            </PageContent>
+          </PageHeader>
+          <PageHeader
+            style={{
+              border: '1px solid rgb(235, 237, 240)',
+              borderRadius: '5px',
+              margin: '15px'
+            }}
+            title="筛选心仪房型和报价"
+          >
+          <PageContent>
+            <div className="content">
+              <Table columns={columns} dataSource={data} />
+            </div>
             </PageContent>
           </PageHeader>
           <PageHeader
@@ -138,10 +265,8 @@ class HotelDetail extends React.Component {
           <PageContent>
             <div className="content">
               <Paragraph>
-                <strong>入离时间</strong>入住时间：14:00以后&nbsp;&nbsp;&nbsp;  离店时间：00:00-12:00。<br/>
-                <strong>餐食政策</strong>酒店不提供早餐。<br/>
-                <strong>宠物政策</strong>不可携带宠物。 <br/>
-                <strong>儿童政策</strong>不接受18岁以下客人单独入住。 不接受18岁以下客人在无监护人陪同的情况下入住。<br/>
+                <div dangerouslySetInnerHTML={{ __html: this.state.hotelDetail.hotelrules }}>
+                </div>
               </Paragraph>
               </div>
             </PageContent>

@@ -41,9 +41,20 @@ class HomeController extends Controller {
     }
     ctx.set('content-type', 'application/json')
   }
+  async orderHotel() {
+    const { ctx } = this
+    console.log(ctx.request.body)
+    ctx.request.body.createdtime = new Date()
+    await this.app.mysql.insert('orderhotel', ctx.request.body)
+    console.log('插入成功')
+    ctx.body = {
+      data: 'ok'
+    }
+    ctx.set('content-type', 'application/json')
+  }
   async hotelDetail() {
     const { ctx } = this
-    const data = await this.app.mysql.select('hotel')
+    const data = await this.app.mysql.select('hoteldetail')
     ctx.body = data
     ctx.set('content-type', 'application/json')
   }
