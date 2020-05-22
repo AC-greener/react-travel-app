@@ -32,10 +32,36 @@ class HomeController extends Controller {
     ctx.set('content-type', 'application/json')
   }
 
+  async login() {
+    const { ctx } = this
+    const data = await this.app.mysql.get('user', {
+      username: ctx.request.body.username,
+      password: ctx.request.body.password
+    })
+    if(data) {
+      console.log('登录成功')
+      ctx.body = { data }
+    } else {
+      ctx.body = { data: 0 }
+    }
+
+  }
+  async regist() {
+    const { ctx } = this
+    const data = await this.app.mysql.get('user', { 
+      username: ctx.request.body.username
+    })
+    if(!data) {
+      //没有这条数据
+      await this.app.mysql.insert('user', ctx.request.body)
+      ctx.body = { data: 1 }
+    } else {
+      ctx.body = { data: 0 } // 0 代表该用户已注册
+    }
+  }
   async postreply() {
     const { ctx } = this
     await this.app.mysql.insert('reply', ctx.request.body)
-    console.log('插入成功')
     ctx.body = {
       data: 'ok'
     }

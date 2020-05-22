@@ -16,4 +16,6 @@ module.exports = async (app) => {
   router.get('/api/hotel/detail', controller.home.hotelDetail)
   router.get('/api/hotellist', controller.home.hotelList)
   router.post('/api/order/hotel', controller.home.orderHotel)
+  router.post('/api/login', controller.home.login)
+  router.post('/api/regist', controller.home.regist)
 };

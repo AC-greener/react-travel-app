@@ -1,20 +1,56 @@
 import React, { Component } from 'react';
-import { Link } from "react-router-dom"
+import { Link, Redirect } from "react-router-dom"
 import 'antd/dist/antd.css';
 import './style.css'
 import { connect } from 'react-redux';
-
+import axios from 'axios'
 import {
   WeiboOutlined,
   WechatOutlined,
   QqOutlined,
-  UserOutlined,
-  LockOutlined
-} from '@ant-design/icons';
-import {  Input, Button } from 'antd';
+} from '@ant-design/icons'
+import {  Input, Button, Form, Icon, message} from 'antd'
+
 class Login extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      redirect: false
+    }
+  }
+
+  handleSubmit = e => {
+    e.preventDefault()
+    this.props.form.validateFields((err, values) => {
+      if (!err) {
+        this.login(values)
+      }
+    })
+  }
+  login(data) {
+    axios.post('http://127.0.0.1:7001/api/login', data)
+    .then(res => {
+      if(res.data.data === 0) {
+        message.error('该用户不存在!')
+      } else {
+        console.log(res.data.data)
+        this.props.login(res.data.data)
+        message.success('登录成功,即将跳转到首页!', 1.5)
+        setTimeout(() => {
+          this.setState({redirect: true})
+        }, 1500)
+      }
+    })
+    .catch(err => {
+      message.error(err)
+    })
+  }
   render() {
-    return (
+    const { getFieldDecorator } = this.props.form
+    if(this.state.redirect) 
+      return <Redirect to='/'/> 
+    else 
+      return (
       <div className="wrapper">
           <Link to="/">
             <div style={{position: "absolute", top: '-23px'}}>
@@ -31,14 +67,44 @@ class Login extends Component {
                 <span className="regist-btn" style={{color: '#969696'}}>注册</span>
               </Link>
             </div>
-            <Input className="input username" size="large" prefix={<UserOutlined />} placeholder="用户名" />
+            <Form onSubmit={this.handleSubmit} className="login-form">
+              <Form.Item>
+                {getFieldDecorator('username', {
+                  rules: [{ required: true, message: ' ' }],
+                })(
+                  <Input
+                  style={{width: '300px'}}
+                    prefix={<Icon type="user"  />}
+                    placeholder="用户名"
+                  />,
+                )}
+              </Form.Item>
+              <Form.Item>
+                {getFieldDecorator('password', {
+                  rules: [{ required: true, message: ' ' }],
+                })(
+                  <Input
+                  style={{width: '300px'}}
+                    prefix={<Icon type="lock"  />}
+                    type="password"
+                    placeholder="密码"
+                  />,
+                )}
+              </Form.Item>
+              <Form.Item>
+                <Button type="primary" htmlType="submit" className="button login">
+                  登录
+                </Button>
+              </Form.Item>
+            </Form>
+            {/* <Input className="input username" size="large" prefix={<UserOutlined />} placeholder="用户名" />
             <Input style={{width: '300px'}} size="large" prefix={<LockOutlined />} placeholder="密码" />
             <Button className="button login" type="primary" block>
               登录
             </Button>
             <div className="shejiao login">
               社交账号登录
-            </div>
+            </div> */}
             <div>
               <WeiboOutlined style={{fontSize: '30px', color: 'rgb(224, 84, 68)', margin: '10px 25px'}} />  
               <WechatOutlined style={{ fontSize: '30px', color: 'rgb(0, 187, 41)', margin: '10px 25px'}} />
@@ -59,9 +125,11 @@ const mapStateProps = (state) => {
 // 分发事件
 const mapDispatchToProps = (dispatch) => {
   return {
-      handleInputBlur() {
+      login(data) {
+        console.log(' mapDispatchToProps')
+        dispatch({type: 'login', payload: data})
       }
   }
 }
-
-export default connect(mapStateProps, mapDispatchToProps)(Login);
+Login = Form.create({})(Login)
+export default connect(mapStateProps, mapDispatchToProps)(Login)
