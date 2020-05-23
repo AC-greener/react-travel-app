@@ -1,22 +1,21 @@
-import React, { Component } from 'react';
-import 'antd/dist/antd.css';
+import React, { Component } from 'react'
+import 'antd/dist/antd.css'
 import './style.css'
 import axios from 'axios'
 import { Link } from "react-router-dom"
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
 import {
   WeiboOutlined,
   WechatOutlined,
   QqOutlined,
   PhoneOutlined
-} from '@ant-design/icons';
-import { Input, Button, message, Form, Icon, Checkbox } from 'antd'
+} from '@ant-design/icons'
+import { Input, Button, message, Form, Icon } from 'antd'
 class Regist extends Component {
   handleSubmit = e => {
     e.preventDefault()
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        console.log('Received values of form: ', values)
         this.login(values)
       }
     });

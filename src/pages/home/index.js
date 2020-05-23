@@ -26,7 +26,7 @@ class Home extends Component  {
               <img src={require('../../static/c4.jpg')} alt='图片出错了'></img>
             </div>
           </Carousel>
-          <Content style={{ marginTop: '20px', padding: '0 50px', border: '1px solid red' }}>
+          <Content style={{ marginTop: '20px', padding: '0 50px'}}>
             <div className="site-layout-content">
               <HotSpots />
               <HotTopic />

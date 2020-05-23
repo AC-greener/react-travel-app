@@ -65,7 +65,6 @@ class HomeController extends Controller {
     ctx.body = {
       data: 'ok'
     }
-    ctx.set('content-type', 'application/json')
   }
   async orderHotel() {
     const { ctx } = this
@@ -76,19 +75,26 @@ class HomeController extends Controller {
     ctx.body = {
       data: 'ok'
     }
-    ctx.set('content-type', 'application/json')
   }
   async hotelDetail() {
     const { ctx } = this
     const data = await this.app.mysql.select('hoteldetail')
     ctx.body = data
-    ctx.set('content-type', 'application/json')
   }
   async hotelList() {
     const { ctx } = this
     const data = await this.app.mysql.select('hotellist')
     ctx.body = data
-    ctx.set('content-type', 'application/json')
+  }
+  async TopicDetail() {
+    const { ctx } = this
+    const data = await this.app.mysql.select('hottopicdetail')
+    ctx.body = data
+  }
+  async TopicList() {
+    const { ctx } = this
+    const data = await this.app.mysql.select('hottopiclist')
+    ctx.body = data
   }
 }
 

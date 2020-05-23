@@ -1,0 +1,51 @@
+.hot-topic .ant-carousel .slick-slide {
+  text-align: center;
+  height: 500px;
+  line-height: 500px;
+  overflow: hidden;
+}
+
+.topic-name {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  color: #fff;
+  font-size: 42px;
+  font-weight: 700;
+  text-shadow: 0 5px 10px rgba(0,0,0,.2);
+}
+.hot-topic h1.topic-name {
+  font-size: 42px;
+  font-weight: 700;
+  text-shadow: 0 5px 10px rgba(0,0,0,.2);
+  text-align: center;
+  margin: 30px;
+}
+.hot-topic h3 {
+  font-size: 24px;
+  margin-top: 20px;
+  font-weight: 500;
+}
+.hot-topic .ant-page-header{
+  font-size: 16px;
+  line-height: 32px;
+  color: rgba(0,0,0,.8); 
+  word-break: break-all;
+}
+.hot-topic .icon-wrapper {
+  margin: 16px;
+  font-size: 24px;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  padding-top: 5px;
+}
+.hot-topic .icon-wrapper:hover {
+  background: rgb(216, 216, 216);
+}
+.hot-topic .icon-wrapper .like {
+  color: #e25959;
+}
