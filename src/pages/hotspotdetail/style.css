@@ -1,0 +1,13 @@
+
+.spot-detail .name {
+  padding: 40px;
+  font-size: 36px;
+  font-family: Hiragino Sans GB,Microsoft YaHei,"\9ED1\4F53","\5b8b\4f53",sans-serif;
+  color: #147850;
+}
+.icon.green {
+  color: #147850;
+}
+.spot-detail .content strong {
+  margin-right: 20px;
+}

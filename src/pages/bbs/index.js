@@ -20,7 +20,7 @@ class Bbs extends Component  {
     this.getMessageBoard()
   }
   getMessageBoard () {
-    axios.get('http://127.0.0.1:7002/api/message')
+    axios.get('http://127.0.0.1:7001/api/message')
     .then(res => {
       console.log(res.data)
       const jiebanlist = []

@@ -1,99 +1,59 @@
-import React, { Component } from 'react';
-import { Row, Col,Card } from 'antd';
+import React, { Component } from 'react'
+import {Link} from 'react-router-dom'
+import { Row, Col,Card, message } from 'antd'
 import './hotSpots.css'
-const { Meta } = Card;
-class HotTopic extends Component  {
+import axios from 'axios'
+
+const { Meta } = Card
+
+class HotSpot extends Component  {
+  constructor (props) {
+    super(props)
+    this.state = {
+      spotlist: []
+    }
+  }
+  componentDidMount () {
+    this.getSpotList()
+  }
+  getSpotList() {
+    axios.get('http://127.0.0.1:7001/api/spot/list')
+      .then(res=> {
+        this.setState({
+          spotlist: res.data
+        })
+      })
+      .catch(err => {
+        message.error(err)
+      })
+  }
   render () {
     return (
       <div style={{ padding: '20px 80px 20px 50px'}}>
         <h1 style={{ fontSize: '32px', textAlign: 'center', marginBottom: '25px'}}>热门景点</h1>
         <Row style={{ padding: '0 130px'}} justify="space-around" gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
-          <Col className="gutter-row" span={6}>
-            <div className='card-wrapper'>
-              <Card className='spot-card' style={{width: 240, height: '270px'}}
-                hoverable
-                cover={<img alt="example" style={{height: '270px'}}   src={require('../../static/spot0.png')} />}
-              >
-                <Meta className='hot-spot'  description="洛克菲勒观景台" />
-              </Card>
-            </div>
-          </Col>
-          <Col className="gutter-row" span={6}>
-            <div className='hot-spot card-wrapper'>
-              <Card className='spot-card'  style={{width: 240, height: '270px'}}
-                hoverable
-                cover={<img alt="example" style={{height: '270px'}}    src={require('../../static/spot1.png')} />}
-              >
-                <Meta className='hot-spot'  description="碎片大厦" />
-              </Card>
-            </div>
-          </Col>
-          <Col className="gutter-row" span={6}>
-            <div className='card-wrapper'>
-              <Card className='spot-card' style={{width: 240, height: '270px'}}
-                hoverable
-                cover={<img alt="example" style={{height: '270px'}}    src={require('../../static/spot2.png')} />}
-              >
-                <Meta className='hot-spot'  description="太平山" />
-              </Card>
-            </div>
-          </Col>
-          <Col className="gutter-row" span={6}>
-            <div className='card-wrapper'>
-              <Card  className='spot-card' style={{width: 240, height: '270px'}}
-                hoverable
-                cover={<img alt="example" style={{height: '270px'}}    src={require('../../static/spot3.png')} />}
-              >
-                <Meta className='hot-spot'  description="象山" />
-              </Card>
-            </div>
-          </Col>
-        </Row>
-        <Row style={{ padding: '0 130px'}} justify="space-around" gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
-          <Col className="gutter-row" span={6}>
-            <div className='card-wrapper'>
-              <Card className='spot-card' style={{width: 240, height: '270px'}}
-                hoverable
-                cover={<img alt="example" style={{height: '270px'}}    src={require('../../static/spot4.png')} />}
-              >
-                <Meta className='hot-spot'  description="蒙帕纳斯大楼" />
-              </Card>
-            </div>
-          </Col>
-          <Col className="gutter-row" span={6}>
-            <div className='card-wrapper'>
-              <Card className='spot-card'  style={{width: 240, height: '270px'}}
-                hoverable
-                cover={<img alt="example" style={{height: '270px'}}    src={require('../../static/spot5.png')} />}
-              >
-                <Meta className='hot-spot'  description="马六甲" />
-              </Card>
-            </div>
-          </Col>
-          <Col className="gutter-row" span={6}>
-            <div className='card-wrapper'>
-              <Card className='spot-card' style={{width: 240, height: '270px'}}
-                hoverable
-                cover={<img alt="example" style={{height: '270px'}}    src={require('../../static/spot6.png')} />}
-              >
-                <Meta className='hot-spot'  description="马丘比丘" />
-              </Card>
-            </div>
-          </Col>
-          <Col className="gutter-row" span={6}>
-            <div className='card-wrapper'>
-              <Card className='spot-card' style={{width: 240, height: '270px'}}
-                hoverable
-                cover={<img alt="example" style={{height: '270px'}}    src={require('../../static/spot7.png')} />}
-              >
-                <Meta className='hot-spot'  description="不夜城香港" />
-              </Card>
-            </div>
-          </Col>
+          {
+            this.state.spotlist.map((item, index) => {
+              return (
+                <Col className="gutter-row" span={6} key={index}>
+                  <div className='card-wrapper'>
+                    <Link to={'/spot/detail/'+ item.id}>
+                      <Card className='spot-card' style={{width: 240, height: '270px'}}
+                        hoverable
+                        cover={<img alt="example" style={{height: '270px'}}   src={item.imgUrl} />}
+                      >
+                        <Meta className='hot-spot'  description={item.spotname} />
+                      </Card>
+                    </Link>
+                  </div>
+                </Col>
+              )
+            })
+          }
         </Row>
       </div>
     )
   }
 }
 
-export default HotTopic;
+export default HotSpot;

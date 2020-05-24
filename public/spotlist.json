@@ -1,0 +1,34 @@
+[
+  {
+    "spotname": "洛克菲勒观景台",
+    "imgUrl": "/static/spot0.png"
+  },
+  {
+    "spotname": "碎片大厦",
+    "imgUrl": "/static/spot1.png"
+  },
+  {
+    "spotname": "太平山",
+    "imgUrl": "/static/spot2.png"
+  },
+  {
+    "spotname": "象山",
+    "imgUrl": "/static/spot3.png"
+  },
+  {
+    "spotname": "蒙帕纳斯大楼",
+    "imgUrl": "/static/spot4.png"
+  },
+  {
+    "spotname": "马六甲",
+    "imgUrl": "/static/spot5.png"
+  },
+  {
+    "spotname": "马丘比丘",
+    "imgUrl": "/static/spot6.png"
+  },
+  {
+    "spotname": "不夜城香港",
+    "imgUrl": "/static/spot7.png"
+  }
+]

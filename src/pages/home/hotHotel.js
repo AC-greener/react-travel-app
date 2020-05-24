@@ -21,7 +21,6 @@ class HotHotel extends Component  {
     .then(res => {
       const hotellist1 = []
       const hotellist2 = []
-      console.log(res)
       res.data.forEach((item, index) => {
         if(index < 4) {
           hotellist1.push(item)

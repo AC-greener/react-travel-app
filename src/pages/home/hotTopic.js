@@ -21,7 +21,6 @@ class HotTopic extends Component  {
   getTopicList() {
     axios.get('http://127.0.0.1:7001/api/topic/list')
       .then(res => {
-        console.log(res)
         this.setState({
           hotTopicList: res.data
         })

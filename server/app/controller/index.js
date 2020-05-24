@@ -17,19 +17,21 @@ class HomeController extends Controller {
     ctx.body = {
       data: 'ok'
     }
-    ctx.set('content-type', 'application/json')
   }
   async getmessage() {
     const { ctx } = this
     const data = await this.app.mysql.select('messageboard')
     ctx.body = data
-    ctx.set('content-type', 'application/json')
+  }
+  async spotList() {
+    const { ctx } = this
+    const data = await this.app.mysql.select('spotlist')
+    ctx.body = data
   }
   async getreply() {
     const { ctx } = this
     const data = await this.app.mysql.select('messageboard')
     ctx.body = data
-    ctx.set('content-type', 'application/json')
   }
 
   async login() {

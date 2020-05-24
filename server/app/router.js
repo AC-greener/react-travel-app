@@ -18,4 +18,5 @@ module.exports = async (app) => {
   router.post('/api/regist', controller.index.regist)
   router.get('/api/topic/list', controller.index.TopicList)
   router.get('/api/topic/detail', controller.index.TopicDetail)
+  router.get('/api/spot/list', controller.index.spotList)
 }

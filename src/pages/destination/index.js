@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import {Layout} from 'antd'
+import {Layout, } from 'antd'
 import Header from '../../common/header/index'
 
 

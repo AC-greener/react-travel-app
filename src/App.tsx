@@ -12,6 +12,7 @@ import Hotel from './pages/hotel/index'
 import HotelDetail from './pages/hoteldetail/index'
 import HotTopicDetail from './pages/hottopic/index'
 import Destination from './pages/destination/index'
+import HotSpotDetail from './pages/hotspotdetail/index'
 
 import store from './store/index'
 const App: React.FC = () => {
@@ -25,6 +26,7 @@ const App: React.FC = () => {
           <Route path='/desti' exact component={ Destination }></Route>
           <Route path='/hotel/detail/:id' exact component={ HotelDetail }></Route>
           <Route path='/topic/detail/:id' exact component={ HotTopicDetail }></Route>
+          <Route path='/spot/detail/:id' exact component={ HotSpotDetail }></Route>
           <Route path='/recline' exact component={ RecommendLine }></Route>
           <Route path='/recline/detail/:id' exact component={ RecommendLineDetail }></Route>
           <Route path='/login' exact component={ Login }></Route>
