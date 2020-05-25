@@ -1,5 +1,5 @@
 const defaultState = {
-  login: false,
+  isLogin: false,
   username: '',
   id: 0
 }
@@ -8,11 +8,11 @@ export default (state = defaultState, action) => {
   switch(action.type) {
     case 'login':
       const newState = {
-        login: true,
+        isLogin: true,
         username: action.payload.username,
         id: action.payload.id
       }
-      console.log(newState)
+      console.log('loginState', newState)
       return newState
     default:
       return state;

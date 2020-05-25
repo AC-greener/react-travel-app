@@ -40,7 +40,7 @@ class HotTopicDetail extends React.Component{
     this.getTopDetail()
   }
   getTopDetail(){
-    axios.get('/topicdetail.json')
+    axios.get('http://127.0.0.1:7001/api/topic/detail')
       .then(res => {
         const data = res.data[this.state.id]
         console.log(data)

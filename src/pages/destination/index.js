@@ -1,18 +1,129 @@
 import React from 'react'
 import axios from 'axios'
-import {Layout, } from 'antd'
+import { Link } from 'react-router-dom'
+import {Layout, Row, Col, Input, message, Card}  from 'antd'
 import Header from '../../common/header/index'
+import './style.css'
+const { Meta } = Card
+const {Content} = Layout
+const {Search} = Input
 
 
 class Destination extends React.Component {
   constructor(props) {
     super(props)
+    this.state = {
+      hotDes: [],
+      europeDes: []
+    }
   }
 
+  componentDidMount() {
+    this.getHotDesList()
+    this.getEuropeList()
+  }
+
+  getHotDesList() {
+    axios.get('/hotdeslist.json')
+      .then(res => {
+        this.setState({
+          hotDes: res.data
+        })
+      })
+      .catch(err => {
+        message.error(err)
+      })
+  }
+  getEuropeList() {
+    axios.get('/europedeslist.json')
+      .then(res => {
+        console.log(res.data)
+        this.setState({
+          europeDes: res.data
+        })
+      })
+      .catch(err => {
+        message.error(err)
+      })
+  }
   render () {
     return (
-      <Layout>
+      <Layout className='desti-layout'>
         <Header activeNav="1" bbs={true}/>
+        <Content style={{marginTop: '50px'}}>
+          <Row style={{position: 'relative'}} >
+            <Col span={24}>
+              <img style={{width: '100vw', height: '600px'}} src='/static/destination-bg.jpg'></img>
+            </Col>
+            <Col offset={6} span={12} className='search-wrapper'>
+              <div className='title-box'>你好, 世界！</div>
+              <div>
+              <Search
+                className='input-search'
+                placeholder="搜索国家、城市、目的地"
+                onSearch={value => console.log(value)}
+                style={{  }}
+              />
+              </div>
+            </Col>
+          </Row>
+          <h1 style={{ fontSize: '32px', textAlign: 'center', margin: '25px'}}>热门目的地</h1>
+          <Row  style={{ padding: '0 160px'}} justify="space-around" gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
+            {
+              this.state.hotDes.map((item, index) => {
+                return (
+                  <Col className="gutter-row" span={6} key={index}>
+                    <div className='card-wrapper'>
+                      <Link to={'/topic/detail/' + item.id}>
+                        <Card
+                          hoverable
+                          style={{ width: 300 }}
+                          cover={<img alt="example" src={item.imgUrl} />}
+                        >
+                          <Meta  description={item.desc} />
+                          <div className='price'>
+                            <em>
+                              {item.price}
+                            </em>
+                            元起
+                          </div>
+                        </Card>
+                      </Link>
+                    </div>
+                  </Col>
+                )
+              })
+            }
+          </Row>
+          <h1 style={{ fontSize: '32px', textAlign: 'center', margin: '25px'}}>欧洲</h1>
+          <Row  style={{ padding: '0 160px'}} justify="space-around" gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
+            {
+              this.state.europeDes.map((item, index) => {
+                return (
+                  <Col className="gutter-row" span={6} key={index}>
+                    <div className='card-wrapper'>
+                      <Link to={'/topic/detail/' + item.id}>
+                        <Card
+                          hoverable
+                          style={{ width: 300 }}
+                          cover={<img alt="example" src={item.imgUrl} />}
+                        >
+                          <Meta  description={item.desc} />
+                          <div className='price'>
+                            <em>
+                              {item.price}
+                            </em>
+                            元起
+                          </div>
+                        </Card>
+                      </Link>
+                    </div>
+                  </Col>
+                )
+              })
+            }
+          </Row>
+        </Content>
       </Layout>
     )
   }

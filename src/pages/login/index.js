@@ -97,14 +97,9 @@ class Login extends Component {
                 </Button>
               </Form.Item>
             </Form>
-            {/* <Input className="input username" size="large" prefix={<UserOutlined />} placeholder="用户名" />
-            <Input style={{width: '300px'}} size="large" prefix={<LockOutlined />} placeholder="密码" />
-            <Button className="button login" type="primary" block>
-              登录
-            </Button>
             <div className="shejiao login">
               社交账号登录
-            </div> */}
+            </div>
             <div>
               <WeiboOutlined style={{fontSize: '30px', color: 'rgb(224, 84, 68)', margin: '10px 25px'}} />  
               <WechatOutlined style={{ fontSize: '30px', color: 'rgb(0, 187, 41)', margin: '10px 25px'}} />
