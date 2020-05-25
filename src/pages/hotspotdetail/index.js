@@ -39,36 +39,84 @@ class HotSpotDetail extends React.Component {
       })
   }
   render () {
-    let text = ''
-    let index = 1
+    let spotname = ''
+    let engname = ''
+    let score = 0
+    let rank = ''
+    let intro = ''
+    let imgUrl = ''
     switch (this.props.match.params.id) {
       case '1':
-        text = '英国-伦敦-爱丁堡-温莎-巴斯（共6天）'
-        index = 1
+        spotname = '洛克菲勒观景台'
+        engname = 'Top of the Rock Observation Deck'
+        score = 9.1
+        rank = '纽约全部景点观光中排第14名'
+        intro = '峭石之巅观景台是仰望天空、俯看纽约的绝佳位置，纽约城市风光一览无余，甚至可以看到自由女神像的绰约风姿'
+        imgUrl = '/static/spot-detail1.jpg'
         break
       case '2':
-        text = '新西兰自驾南岛深度游'
-        index = 2
+        spotname = '碎片大厦'
+        engname = 'The Shard'
+        score = 8.6
+        rank = '伦敦全部景点观光中排第27名'
+        intro = '2012年7月5日伦敦碎片大厦正式开幕，成为欧洲最高建筑。这座由意大利建筑师皮亚诺设计的大厦历时12年的建设，共88层，高达310米，成为了伦敦的新地标。'
+        imgUrl = '/static/spot-detail2.jpg'
         break
       case '3':
-        text = '法国（签证版）'
-        index = 3
+        spotname = '太平山'
+        engname = 'Victoria Peak'
+        score = 8.9
+        rank = '香港全部景点观光中排第1名'
+        intro = '香港岛最高山峰，也是俯瞰香港夜景的必到处。太平山顶广场采用装饰艺术(Art Deco)建筑风格。可于商场内品尝各国佳肴及购买本地创作的特色精品，更可前往顶层的绿茵平台，饱览维多利亚港全貌和薄扶林水塘的自然美景。乘坐山顶缆车观看倾斜的香港，也是另一种独特的观光方法。山顶有凌霄阁摩天台、香港杜莎夫人蜡像馆等。'
+        imgUrl = '/static/spot-detail3.jpg'
         break
       case '4':
-        text = '巴黎罗马巴塞罗那'
-        index = 4
+        spotname = '象山'
+        engname = 'Xiang Shan'
+        score = 9.1
+        rank = '台北全部景点观光中排第17名'
+        intro = '象山位于台北市信义区，属于台北盆地东南丘陵的一部分，因山形似象而得名；与附近的虎、豹、狮山并称四兽山，同为南港山系的延伸。海拔标高183公尺，山不高，但前无屏障，台北盆地一览无遗，不仅是登高眺望的好据点，也是拍摄101高楼的绝佳地点。'
+        imgUrl = '/static/spot-detail4.jpg'
         break
       case '5':
-        text = '魔芋菌的奥捷行程'
-        index = 5
+        spotname = '蒙帕纳斯大楼'
+        engname = 'Montparnasse Tower'
+        score = 8.4
+        rank = '巴黎全部景点观光中排第37名'
+        intro = '蒙帕纳斯大楼(又称蒙巴纳斯高楼)建于1972年，共59层，高209米，是巴黎市区除埃菲尔铁塔外最高的建筑，也是市区唯一的一座摩天大楼。在大楼的第56层，可以在最佳位置尽情享受全景巴黎和各种建筑物！大楼的完美设计使得巴黎全景近在眼前。这里是巴黎最高和最中心点，面朝埃菲尔铁塔，是抓住巴黎最美风景的完美位置。'
+        imgUrl = '/static/spot-detail5.jpg'
         break
       case '6':
-        text = '湖南之旅'
-        index = 6
+        spotname = '马六甲'
+        engname = 'Melaka'
+        score = 9.1
+        rank = '纽约全部景点观光中排第18名'
+        intro = '马六甲是马六甲州的首府，位于马六甲海峡北岸，与印尼的苏门答腊隔海相望。马六甲也是马来西亚历史最悠久的城市，始建于1403年，曾是马六甲王国的都城。'
+        imgUrl = '/static/spot-detail6.jpg'
+        break
+      case '7':
+        spotname = '马丘比丘'
+        engname = 'Machu Picchu'
+        score = 9.2
+        rank = '全部景点观光中排第4名'
+        intro = '由于独特的位置、地理特点和发现时间较晚，马丘比丘成了印加帝国最为人所熟悉的标志。在1983年，马丘比丘被联合国教科文组织定为世界遗产，是世界上为数不多的文化与自然双重遗产之一。'
+        imgUrl = '/static/spot-detail7.jpg'
+        break
+      case '8':
+        spotname = '不夜城香港'
+        engname = 'Xiang Gang'
+        score = 9.1
+        rank = '香港全部景点观光中排第3名'
+        intro = '记得张爱玲把香港描绘成悲伤却又纸醉金迷的城市，虽然我对于她的文字并不太感冒，但是对于这样的大都市，夜色笼罩下的她一定会呈现出同白天完全不同的美感。'
+        imgUrl = '/static/spot-detail8.jpg'
         break
       default:
-        text = '英国-伦敦-爱丁堡-温莎-巴斯（共6天）'
-        index = 1
+        spotname = '洛克菲勒观景台'
+        engname = 'Top of the Rock Observation Deck'
+        score = 8.2
+        rank = '全部景点观光中排第14名'
+        intro = '峭石之巅观景台是仰望天空、俯看纽约的绝佳位置，纽约城市风光一览无余，甚至可以看到自由女神像的绰约风姿'
+        imgUrl = '/static/spot-detail1.jpg'
         break
     }
     return (
@@ -77,8 +125,8 @@ class HotSpotDetail extends React.Component {
         <Content style={{marginTop: '50px', marginBottom: '60px'}} >
           <Row >
             <Col className='name'  span={12} offset={4}>
-              <div>Top of the Rock Observation Deck</div>
-              <div>洛克菲勒观景台</div>
+              <div>{engname}</div>
+              <div>{spotname}</div>
             </Col>
             <Col style={{height:'188px',paddingTop: '58px'}}  span={4}>
               <div style={{cursor: 'pointer'}}>
@@ -95,10 +143,10 @@ class HotSpotDetail extends React.Component {
             <Col style={{padding: '65px'}}   span={12} offset={4}>
               <Row>
                 <Col span={12}>
-                  <img src='/static/spot-detail.jpg'></img>
+                  <img src={imgUrl}></img>
                 </Col>
                 <Col span={12}>
-                  <div style={{fontSize:'27px', color: '#147850'}}>9.1分</div>
+                  <div style={{fontSize:'27px', color: '#147850'}}>{score}分</div>
                   <div style={{fontSize:'27px', margin: '15px 0 15px 0'}}>
                     <Icon className='green icon' type="star" />
                     <Icon className='green icon' type="star" />
@@ -106,7 +154,7 @@ class HotSpotDetail extends React.Component {
                     <Icon className='green icon' type="star" />
                     <Icon type="star" />
                   </div>
-                  <div style={{fontSize:'16px'}}>纽约全部景点观光中排第14名</div>
+                  <div style={{fontSize:'16px'}}>{rank}</div>
                 </Col>
               </Row>
               <Row>
@@ -120,7 +168,7 @@ class HotSpotDetail extends React.Component {
                 <PageContent>
                   <div className="content">
                     <Paragraph>
-                    峭石之巅观景台是仰望天空、俯看纽约的绝佳位置，纽约城市风光一览无余，甚至可以看到自由女神像的绰约风姿
+                    {intro}
                     </Paragraph>
                     <Paragraph>
                       <div> 
