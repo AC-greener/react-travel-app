@@ -14,11 +14,11 @@ module.exports = async (app) => {
   router.get('/api/topic/detail', controller.index.TopicDetail)
   router.get('/api/spot/list', controller.index.spotList)
   router.get('/api/des/hotlist', controller.index.desHotlist)
-  router.get('/api/des/europelist', controller.index.desEuropelist)
 
   router.post('/api/message', controller.index.postmessage)
   router.post('/api/reply', controller.index.postreply)
   router.post('/api/order/hotel', controller.index.orderHotel)
+  router.post('/api/order/des', controller.index.orderDes)
   router.post('/api/login', controller.index.login)
   router.post('/api/regist', controller.index.regist)
 

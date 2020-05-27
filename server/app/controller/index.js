@@ -78,6 +78,16 @@ class HomeController extends Controller {
       data: 'ok'
     }
   }
+  async orderDes() {
+    const { ctx } = this
+    console.log(ctx.request.body)
+    ctx.request.body.createdtime = new Date()
+    await this.app.mysql.insert('orderdes', ctx.request.body)
+    console.log('插入成功')
+    ctx.body = {
+      data: 'ok'
+    }
+  }
   async hotelDetail() {
     const { ctx } = this
     const data = await this.app.mysql.select('hoteldetail')
@@ -103,11 +113,7 @@ class HomeController extends Controller {
     const data = await this.app.mysql.select('hotdeslist')
     ctx.body = data
   }
-  async desEuropelist() {
-    const { ctx } = this
-    const data = await this.app.mysql.select('europedeslist')
-    ctx.body = data
-  }
+
 }
 
 module.exports = HomeController

@@ -20,32 +20,32 @@ class Destination extends React.Component {
 
   componentDidMount() {
     this.getHotDesList()
-    this.getEuropeList()
+    // this.getEuropeList()
   }
 
   getHotDesList() {
-    axios.get('/hotdeslist.json')
+    axios.get('http://127.0.0.1:7001/api/des/hotlist')
       .then(res => {
-        this.setState({
-          hotDes: res.data
+        const hotDes = []
+        const europeDes = []
+        res.data.forEach((item) => {
+          if(item.type === "hot") {
+            hotDes.push(item)
+          } else if(item.type === "europe") {
+            europeDes.push(item)
+          }
         })
+        this.setState({
+          hotDes: hotDes,
+          europeDes: europeDes
+        })
+        console.log(this.state)
       })
       .catch(err => {
         message.error(err)
       })
   }
-  getEuropeList() {
-    axios.get('/europedeslist.json')
-      .then(res => {
-        console.log(res.data)
-        this.setState({
-          europeDes: res.data
-        })
-      })
-      .catch(err => {
-        message.error(err)
-      })
-  }
+
   render () {
     return (
       <Layout className='desti-layout'>
@@ -74,7 +74,7 @@ class Destination extends React.Component {
                 return (
                   <Col className="gutter-row" span={6} key={index}>
                     <div className='card-wrapper'>
-                      <Link to={'/topic/detail/' + item.id}>
+                      <Link to={'/desti/detail/' + item.id}>
                         <Card
                           hoverable
                           style={{ width: 300 }}
@@ -102,7 +102,7 @@ class Destination extends React.Component {
                 return (
                   <Col className="gutter-row" span={6} key={index}>
                     <div className='card-wrapper'>
-                      <Link to={'/topic/detail/' + item.id}>
+                      <Link to={'/desti/detail/' + item.id}>
                         <Card
                           hoverable
                           style={{ width: 300 }}

@@ -73,8 +73,8 @@ class Heade extends Component  {
 
 const mapStateToProps = (state) => {
   return {
-    login: true,
-    username: '张三'
+    login: state.get('login').isLogin,
+    username: state.get('login').username
   }
 }
 export default connect(mapStateToProps)(Heade)
