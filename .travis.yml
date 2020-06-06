@@ -3,4 +3,4 @@ install: npm install
 node_js:
   - "10"
 after_success:
-  - ssh root@47.104.192.20 'cd ~ && mkdir testaa'
+  - ssh root@47.104.194.20 'cd ~ && mkdir testaa'
