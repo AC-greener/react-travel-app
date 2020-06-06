@@ -73,8 +73,8 @@ class Heade extends Component  {
 
 const mapStateToProps = (state) => {
   return {
-    // login: state.get('login').isLogin,
-    login: true,
+    login: state.get('login').isLogin,
+    // login: true,
     username: 'admin'
     // username: state.get('login').username
   }
