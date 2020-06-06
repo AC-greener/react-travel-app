@@ -19,7 +19,8 @@
     "egg-ci": "^1.11.0",
     "egg-mock": "^3.21.0",
     "eslint": "^5.13.0",
-    "eslint-config-egg": "^7.1.0"
+    "eslint-config-egg": "^7.1.0",
+    "husky": "^4.2.5"
   },
   "engines": {
     "node": ">=10.0.0"
@@ -42,6 +43,11 @@
   "repository": {
     "type": "git",
     "url": ""
+  },
+  "husky": {
+    "hooks": {
+      "post-commit": "npm test"
+    }
   },
   "author": "tongtong",
   "license": "MIT"

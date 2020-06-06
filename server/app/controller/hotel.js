@@ -37,7 +37,7 @@ class HotelController extends Controller {
   async addHotelList() {
     const { ctx } = this
     const data = await this.app.mysql.insert('hotellist', ctx.request.body)
-    console.log('添加成功')
+    console.log('添加成功1')
     ctx.body = data
   }
   async getUserHotel() {
