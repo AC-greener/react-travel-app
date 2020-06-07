@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { Row, Col,Card, message } from 'antd'
 import './hotTopic.css'
+import { topicListUrl } from '../../config/index'
 import axios from 'axios'
 
 
@@ -19,7 +20,7 @@ class HotTopic extends Component  {
   }
 
   getTopicList() {
-    axios.get('http://127.0.0.1:7001/api/topic/list')
+    axios.get(topicListUrl)
       .then(res => {
         this.setState({
           hotTopicList: res.data

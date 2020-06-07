@@ -1,17 +1,15 @@
 import React from 'react'
 import { Layout, Menu, Icon,message,Button, Table,Switch  } from 'antd';
-import {userInfoUrl} from '../../config/index'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import axios from 'axios'
-import './style.css'
-
+import { desListUrl } from '../../../config/index'
 const { Header, Sider, Content, } = Layout;
 
-class Dashboard extends React.Component {
+class DesInfo extends React.Component {
   state = {
     collapsed: false,
-    userinfo: [],
+    desList: []
   };
 
   toggle = () => {
@@ -20,48 +18,41 @@ class Dashboard extends React.Component {
     });
   };
   componentDidMount() {
-    this.getUserInfo()
+    this.getHotDesList()
   }
-  getUserInfo() {
-    axios.get(userInfoUrl)
+
+  getHotDesList() {
+    axios.get(desListUrl)
       .then(res => {
-        console.log(res.data.data)
-        res.data.data.forEach((item,index) => {
-          if(item.isadmin) {
-            res.data.data[index].isadmin = '是'
-          } else {
-            res.data.data[index].isadmin = '否'
-          }
-        })
+        console.log(res)
         this.setState({
-          userinfo: res.data.data
+          desList: res.data
         })
+        console.log(this.state)
       })
       .catch(err => {
         message.error(err)
       })
   }
-  onChange() {
 
-  }
   render() {
-    const userColumns = [
+    const desColumns = [
       {
-        title: '用户名',
-        dataIndex: 'username',
-        key: 'username',
+        title: '景点介绍',
+        dataIndex: 'desc',
+        key: 'desc',
         align: 'center'
       },
       {
-        title: '手机号',
-        dataIndex: 'tel',
-        key: 'tel',
+        title: '类型',
+        dataIndex: 'type',
+        key: 'type',
         align: 'center'
       },
       {
-        title: '是否为管理员',
-        dataIndex: 'isadmin',
-        key: 'isadmin',
+        title: '价格',
+        dataIndex: 'price',
+        key: 'price',
         align: 'center'
       },
       {
@@ -70,18 +61,8 @@ class Dashboard extends React.Component {
         align: 'center',
         render: (text, record) => (
           <span>
-            <Button type="primary"onClick={() => {}}>删除</Button>
+            <Button type="primary" onClick={(record) => {}}>删除</Button>
           </span>
-        ),
-      },
-      {
-        title: '设置为管理员',
-        key: 'set',
-        align: 'center',
-        render: (text, record) => (
-          <span>
-            <Switch defaultChecked onChange={() => {}} />
-         </span>
         ),
       },
     ]
@@ -89,7 +70,7 @@ class Dashboard extends React.Component {
       <Layout className='dashboard'>
         <Sider  trigger={null} collapsible collapsed={this.state.collapsed}>
           <div className="logo" />
-          <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
+          <Menu theme="dark" mode="inline" defaultSelectedKeys={['3']}>
             <Menu.Item key="1">
               <Link to='/admin'>  
                 <Icon type="user" />
@@ -110,19 +91,19 @@ class Dashboard extends React.Component {
             </Menu.Item>
             <Menu.Item key="4">
              <Link to='/admin/hotel'>  
-             <Icon type="reconciliation" />
+              <Icon type="reconciliation" />
                 <span>酒店信息管理</span>
               </Link>
             </Menu.Item>
             <Menu.Item key="5">
               <Link to='/admin/hotelorder'>              
-              <Icon type="database" />
+                <Icon type="database" />
                 <span>酒店订单</span>
               </Link>
             </Menu.Item>
             <Menu.Item key="6">
               <Link to='/admin/desorder'>  
-              <Icon type="bar-chart" />
+                <Icon type="bar-chart" />
                 <span>行程订单</span>
               </Link>
             </Menu.Item>
@@ -144,7 +125,7 @@ class Dashboard extends React.Component {
               minHeight: 280,
             }}
           >
-            <Table columns={userColumns} dataSource={this.state.userinfo} />
+            <Table columns={desColumns} dataSource={this.state.desList} />
           </Content>
         </Layout>
       </Layout>
@@ -152,4 +133,4 @@ class Dashboard extends React.Component {
   }
 }
 
-export default Dashboard
+export default DesInfo

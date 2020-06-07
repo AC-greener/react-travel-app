@@ -10,3 +10,10 @@ script:
   - npm run ci
 after_script:
   - npminstall codecov && codecov
+
+# language: node_js
+# install: npm install
+# node_js:
+#   - "10"
+# after_success:
+#   - ssh root@47.104.194.20 'cd ~ && mkdir testaa'

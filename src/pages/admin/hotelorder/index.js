@@ -1,17 +1,16 @@
 import React from 'react'
 import { Layout, Menu, Icon,message,Button, Table,Switch  } from 'antd';
-import {userInfoUrl} from '../../config/index'
-import {Link} from 'react-router-dom'
-import {connect} from 'react-redux'
+import { userHotelOrderUrl } from '../../../config/index'
+import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
 import axios from 'axios'
-import './style.css'
 
 const { Header, Sider, Content, } = Layout;
 
-class Dashboard extends React.Component {
+class HotelOrderAdmin extends React.Component {
   state = {
     collapsed: false,
-    userinfo: [],
+    hotelData: []
   };
 
   toggle = () => {
@@ -20,21 +19,14 @@ class Dashboard extends React.Component {
     });
   };
   componentDidMount() {
-    this.getUserInfo()
+    this.getUserHotel()
   }
-  getUserInfo() {
-    axios.get(userInfoUrl)
+  getUserHotel() {
+    axios.get(userHotelOrderUrl)
       .then(res => {
-        console.log(res.data.data)
-        res.data.data.forEach((item,index) => {
-          if(item.isadmin) {
-            res.data.data[index].isadmin = '是'
-          } else {
-            res.data.data[index].isadmin = '否'
-          }
-        })
+        console.log(res.data)
         this.setState({
-          userinfo: res.data.data
+          hotelData: res.data
         })
       })
       .catch(err => {
@@ -45,7 +37,7 @@ class Dashboard extends React.Component {
 
   }
   render() {
-    const userColumns = [
+    const hotelColumns = [
       {
         title: '用户名',
         dataIndex: 'username',
@@ -53,43 +45,42 @@ class Dashboard extends React.Component {
         align: 'center'
       },
       {
-        title: '手机号',
-        dataIndex: 'tel',
-        key: 'tel',
+        title: '酒店信息',
+        dataIndex: 'hotelname',
+        key: 'hotelname',
         align: 'center'
       },
       {
-        title: '是否为管理员',
-        dataIndex: 'isadmin',
-        key: 'isadmin',
+        title: '价格',
+        dataIndex: 'price',
+        key: 'price',
         align: 'center'
       },
       {
-        title: '操作',
-        key: 'action',
+        title: '入住时间',
+        dataIndex: 'starttime',
+        key: 'starttime',
         align: 'center',
-        render: (text, record) => (
-          <span>
-            <Button type="primary"onClick={() => {}}>删除</Button>
-          </span>
-        ),
       },
       {
-        title: '设置为管理员',
-        key: 'set',
+        title: '离开时间',
+        dataIndex: 'endtime',
+        key: 'endtime',
         align: 'center',
-        render: (text, record) => (
-          <span>
-            <Switch defaultChecked onChange={() => {}} />
-         </span>
-        ),
+      },
+      {
+        title: '房间类型',
+        dataIndex: 'roomtype',
+        key: 'roomtype',
+        align: 'center',
       },
     ]
+    
     return (
       <Layout className='dashboard'>
-        <Sider  trigger={null} collapsible collapsed={this.state.collapsed}>
+        <Sider trigger={null} collapsible collapsed={this.state.collapsed}>
           <div className="logo" />
-          <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
+          <Menu theme="dark" mode="inline" defaultSelectedKeys={['5']}>
             <Menu.Item key="1">
               <Link to='/admin'>  
                 <Icon type="user" />
@@ -144,7 +135,7 @@ class Dashboard extends React.Component {
               minHeight: 280,
             }}
           >
-            <Table columns={userColumns} dataSource={this.state.userinfo} />
+            <Table columns={hotelColumns} dataSource={this.state.hotelData} />
           </Content>
         </Layout>
       </Layout>
@@ -152,4 +143,4 @@ class Dashboard extends React.Component {
   }
 }
 
-export default Dashboard
+export default HotelOrderAdmin

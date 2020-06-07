@@ -1,17 +1,16 @@
 import React from 'react'
 import { Layout, Menu, Icon,message,Button, Table,Switch  } from 'antd';
-import {userInfoUrl} from '../../config/index'
-import {Link} from 'react-router-dom'
-import {connect} from 'react-redux'
+import { userMessageUrl } from '../../../config/index'
+import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
 import axios from 'axios'
-import './style.css'
 
 const { Header, Sider, Content, } = Layout;
 
-class Dashboard extends React.Component {
+class DesOrderAdmin extends React.Component {
   state = {
     collapsed: false,
-    userinfo: [],
+    messageData: [],
   };
 
   toggle = () => {
@@ -20,32 +19,37 @@ class Dashboard extends React.Component {
     });
   };
   componentDidMount() {
-    this.getUserInfo()
+    this.getUserMessage()
   }
-  getUserInfo() {
-    axios.get(userInfoUrl)
+  getUserMessage() {
+    axios.get(userMessageUrl)
       .then(res => {
-        console.log(res.data.data)
-        res.data.data.forEach((item,index) => {
-          if(item.isadmin) {
-            res.data.data[index].isadmin = '是'
-          } else {
-            res.data.data[index].isadmin = '否'
-          }
+        console.log(res)
+        res.data.forEach((item,index) => {
+          res.data[index].createdtime = new Date(item.createdtime).toLocaleDateString()
         })
         this.setState({
-          userinfo: res.data.data
+          messageData: res.data
         })
       })
       .catch(err => {
         message.error(err)
       })
   }
-  onChange() {
 
+  deleteUserMessage(record) {
+    console.log(record)
+    axios.delete(userMessageUrl+ record.id)
+      .then(res=> {
+        message.success('删除成功！')
+        this.getUserMessage()
+      })
+      .catch(err => {
+        message.error(err)
+      })
   }
   render() {
-    const userColumns = [
+    const messageColumns = [
       {
         title: '用户名',
         dataIndex: 'username',
@@ -53,15 +57,15 @@ class Dashboard extends React.Component {
         align: 'center'
       },
       {
-        title: '手机号',
-        dataIndex: 'tel',
-        key: 'tel',
+        title: '留言时间',
+        dataIndex: 'createdtime',
+        key: 'createdtime',
         align: 'center'
       },
       {
-        title: '是否为管理员',
-        dataIndex: 'isadmin',
-        key: 'isadmin',
+        title: '留言内容',
+        dataIndex: 'content',
+        key: 'content',
         align: 'center'
       },
       {
@@ -70,26 +74,18 @@ class Dashboard extends React.Component {
         align: 'center',
         render: (text, record) => (
           <span>
-            <Button type="primary"onClick={() => {}}>删除</Button>
+            <Button onClick={() => {this.deleteUserMessage(record)}}>删除</Button>
           </span>
         ),
       },
-      {
-        title: '设置为管理员',
-        key: 'set',
-        align: 'center',
-        render: (text, record) => (
-          <span>
-            <Switch defaultChecked onChange={() => {}} />
-         </span>
-        ),
-      },
     ]
+    
+
     return (
       <Layout className='dashboard'>
-        <Sider  trigger={null} collapsible collapsed={this.state.collapsed}>
+        <Sider trigger={null} collapsible collapsed={this.state.collapsed}>
           <div className="logo" />
-          <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
+          <Menu theme="dark" mode="inline" defaultSelectedKeys={['2']}>
             <Menu.Item key="1">
               <Link to='/admin'>  
                 <Icon type="user" />
@@ -144,7 +140,7 @@ class Dashboard extends React.Component {
               minHeight: 280,
             }}
           >
-            <Table columns={userColumns} dataSource={this.state.userinfo} />
+            <Table columns={messageColumns} dataSource={this.state.messageData} />
           </Content>
         </Layout>
       </Layout>
@@ -152,4 +148,4 @@ class Dashboard extends React.Component {
   }
 }
 
-export default Dashboard
+export default DesOrderAdmin

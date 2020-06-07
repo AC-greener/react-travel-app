@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Row, Col,Card, Button } from 'antd';
 import {Link} from 'react-router-dom'
+import { hotelListUrl } from '../../config/index'
 import './hotHotel.css'
 import axios from 'axios'
 const { Meta } = Card
@@ -17,7 +18,7 @@ class HotHotel extends Component  {
     this.getHotelList()
   }
   getHotelList() {
-    axios.get('http://127.0.0.1:7001/api/hotellist')
+    axios.get(hotelListUrl)
     .then(res => {
       const hotellist1 = []
       const hotellist2 = []

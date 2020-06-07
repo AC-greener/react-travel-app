@@ -42,11 +42,17 @@ class HotelController extends Controller {
   }
   async getUserHotel() {
     const { ctx } = this
-    console.log(ctx.params.userid)
-    const data = await this.app.mysql.select('orderhotel', {
-      // userid: ctx.params.userid,
-    })
-    ctx.body = data
+    if(ctx.params.userid) {
+      const data = await this.app.mysql.select('orderhotel', {
+        // userid: ctx.params.userid,
+      })
+      console.log('111')
+      ctx.body = data
+    } else {
+      const data = await this.app.mysql.select('orderhotel')
+      console.log('111')
+      ctx.body = data
+    }
   }
 }
 module.exports = HotelController

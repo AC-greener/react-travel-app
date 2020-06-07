@@ -2,6 +2,7 @@ import React from 'react';
 import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
 import { BrowserRouter, Route } from "react-router-dom"
 import { Provider } from 'react-redux'
+
 import Login from './pages/login/index'
 import Regist from './pages/regist/index'
 import Home from './pages/home/index'
@@ -15,9 +16,13 @@ import Destination from './pages/destination/index'
 import HotSpotDetail from './pages/hotspotdetail/index'
 import Personal from './pages/personal/index'
 import DesDetail from './pages/desdetail/index'
-
+import DashBoard from './pages/admin/index'
+import HotelOrderAdmin from './pages/admin/hotelorder'
+import DesOrderAdmin from './pages/admin/desorder'
+import MessageAdmin from './pages/admin/message'
+import DesAdmin from './pages/admin/desinfo'
 import store from './store/index'
-const App: React.FC = () => {
+const App = () => {
   return (
     <Provider store={store}>  
       <BrowserRouter>
@@ -35,6 +40,11 @@ const App: React.FC = () => {
           <Route path='/recline/detail/:id' exact component={ RecommendLineDetail }></Route>
           <Route path='/login' exact component={ Login }></Route>
           <Route path='/regist' exact component={ Regist }></Route>
+          <Route path='/admin' exact component={ DashBoard }></Route>
+          <Route path='/admin/hotelorder' exact component={ HotelOrderAdmin }></Route>
+          <Route path='/admin/desorder' exact component={ DesOrderAdmin }></Route>
+          <Route path='/admin/message' exact component={ MessageAdmin }></Route>
+          <Route path='/admin/des' exact component={ DesAdmin }></Route>
         </div>
       </BrowserRouter>
     </Provider>

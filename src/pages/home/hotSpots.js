@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 import { Row, Col,Card, message } from 'antd'
 import './hotSpots.css'
 import axios from 'axios'
-
+import { spotListUrl } from '../../config/index'
 const { Meta } = Card
 
 class HotSpot extends Component  {
@@ -17,7 +17,7 @@ class HotSpot extends Component  {
     this.getSpotList()
   }
   getSpotList() {
-    axios.get('http://127.0.0.1:7001/api/spot/list')
+    axios.get(spotListUrl)
       .then(res=> {
         this.setState({
           spotlist: res.data

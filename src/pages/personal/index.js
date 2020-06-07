@@ -3,7 +3,7 @@ import {Layout, Col, Row, Avatar, Tabs, message, Table, Button} from 'antd'
 import Header from '../../common/header/index'
 import {connect} from 'react-redux'
 import './style.css'
-
+import {userMessageUrl, userDesOrderUrl ,userHotelOrderUrl} from '../../config/index'
 import axios from 'axios'
 const {Content} = Layout
 const { TabPane } = Tabs
@@ -79,7 +79,7 @@ class Personal extends React.Component {
   }
 
   getUserMessage() {
-    axios.get('http://127.0.0.1:7001/api/message/' + this.props.userid)
+    axios.get(userMessageUrl + this.props.userid)
       .then(res => {
         res.data.forEach((item,index) => {
           res.data[index].createdtime = new Date(item.createdtime).toLocaleDateString()
@@ -94,7 +94,7 @@ class Personal extends React.Component {
   }
 
   getUserHotel() {
-    axios.get('http://127.0.0.1:7001/api/order/hotel/' + this.props.userid)
+    axios.get(userHotelOrderUrl+ this.props.userid)
       .then(res => {
         this.setState({
           hotelData: res.data
@@ -106,7 +106,7 @@ class Personal extends React.Component {
   }
 
   getUserDes() {
-    axios.get('http://127.0.0.1:7001/api/order/des/' + this.props.userid)
+    axios.get(userDesOrderUrl + this.props.userid)
       .then(res => {
         console.log(res.data)
         this.setState({
@@ -119,7 +119,7 @@ class Personal extends React.Component {
   }
   deleteUserMessage(record) {
     console.log(record)
-    axios.delete('http://127.0.0.1:7001/api/message/' + record.id)
+    axios.delete(userMessageUrl+ record.id)
       .then(res=> {
         message.success('删除成功！')
         this.getUserMessage()
@@ -182,7 +182,7 @@ class Personal extends React.Component {
                   <Table columns={messageColumns} dataSource={this.state.messageData} />
                 </TabPane>
                 <TabPane tab="我的酒店" key="2">
-                <Table columns={hotelColumns} dataSource={this.state.hotelData} />
+                  <Table columns={hotelColumns} dataSource={this.state.hotelData} />
                 </TabPane>
                 <TabPane tab="我的旅途" key="3">
                 <Table columns={desColumns} dataSource={this.state.desData} />

@@ -1,17 +1,17 @@
 import React from 'react'
 import { Layout, Menu, Icon,message,Button, Table,Switch  } from 'antd';
-import {userInfoUrl} from '../../config/index'
-import {Link} from 'react-router-dom'
-import {connect} from 'react-redux'
+import { userDesOrderUrl } from '../../../config/index'
+import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
 import axios from 'axios'
-import './style.css'
 
 const { Header, Sider, Content, } = Layout;
 
-class Dashboard extends React.Component {
+class DesOrderAdmin extends React.Component {
   state = {
     collapsed: false,
-    userinfo: [],
+    hotelData: [],
+    desData: [],
   };
 
   toggle = () => {
@@ -20,21 +20,14 @@ class Dashboard extends React.Component {
     });
   };
   componentDidMount() {
-    this.getUserInfo()
+    this.getUserDes()
   }
-  getUserInfo() {
-    axios.get(userInfoUrl)
+  getUserDes() {
+    axios.get(userDesOrderUrl)
       .then(res => {
-        console.log(res.data.data)
-        res.data.data.forEach((item,index) => {
-          if(item.isadmin) {
-            res.data.data[index].isadmin = '是'
-          } else {
-            res.data.data[index].isadmin = '否'
-          }
-        })
+        console.log(res.data)
         this.setState({
-          userinfo: res.data.data
+          desData: res.data
         })
       })
       .catch(err => {
@@ -45,7 +38,7 @@ class Dashboard extends React.Component {
 
   }
   render() {
-    const userColumns = [
+    const desColumns = [
       {
         title: '用户名',
         dataIndex: 'username',
@@ -53,43 +46,30 @@ class Dashboard extends React.Component {
         align: 'center'
       },
       {
-        title: '手机号',
-        dataIndex: 'tel',
-        key: 'tel',
+        title: '景点名称',
+        dataIndex: 'destation',
+        key: 'destation',
         align: 'center'
       },
       {
-        title: '是否为管理员',
-        dataIndex: 'isadmin',
-        key: 'isadmin',
+        title: '出发时间',
+        dataIndex: 'starttime',
+        key: 'starttime',
         align: 'center'
       },
       {
-        title: '操作',
-        key: 'action',
-        align: 'center',
-        render: (text, record) => (
-          <span>
-            <Button type="primary"onClick={() => {}}>删除</Button>
-          </span>
-        ),
-      },
-      {
-        title: '设置为管理员',
-        key: 'set',
-        align: 'center',
-        render: (text, record) => (
-          <span>
-            <Switch defaultChecked onChange={() => {}} />
-         </span>
-        ),
-      },
+        title: '价格',
+        dataIndex: 'price',
+        key: 'price',
+        align: 'center'
+      }
     ]
+
     return (
       <Layout className='dashboard'>
-        <Sider  trigger={null} collapsible collapsed={this.state.collapsed}>
+        <Sider trigger={null} collapsible collapsed={this.state.collapsed}>
           <div className="logo" />
-          <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
+          <Menu theme="dark" mode="inline" defaultSelectedKeys={['6']}>
             <Menu.Item key="1">
               <Link to='/admin'>  
                 <Icon type="user" />
@@ -144,7 +124,7 @@ class Dashboard extends React.Component {
               minHeight: 280,
             }}
           >
-            <Table columns={userColumns} dataSource={this.state.userinfo} />
+            <Table columns={desColumns} dataSource={this.state.desData} />
           </Content>
         </Layout>
       </Layout>
@@ -152,4 +132,4 @@ class Dashboard extends React.Component {
   }
 }
 
-export default Dashboard
+export default DesOrderAdmin

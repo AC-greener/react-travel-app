@@ -32,32 +32,40 @@ module.exports = async (app) => {
   router.post('/api/order/hotel', controller.hotel.orderHotel)
   //获取某个用户的酒店信息
   router.get('/api/order/hotel/:userid', controller.hotel.getUserHotel)
+  //获取全部用户的酒店信息
+  router.get('/api/order/hotel', controller.hotel.getUserHotel)
 
 
   //游记列表
-  router.get('/api/topic/list', controller.index.TopicList)
+  router.get('/api/topic/list', controller.topic.TopicList)
   //添加游记
-  router.post('/api/topic/list', controller.index.addTopicList)
+  router.post('/api/topic/list', controller.topic.addTopicList)
   //删除游记
-  router.delete('/api/topic/list/:id', controller.index.deleteTopicList)
+  router.delete('/api/topic/list/:id', controller.topic.deleteTopicList)
   //获取热门游记详细信息
-  router.get('/api/topic/detail', controller.index.TopicDetail)
+  router.get('/api/topic/detail', controller.topic.TopicDetail)
 
 
   //获取热门景点信息
-  router.get('/api/spot/list', controller.index.spotList)
+  router.get('/api/spot/list', controller.destination.spotList)
   //获取目的地信息
-  router.get('/api/des/hotlist', controller.index.desHotlist)
+  router.get('/api/des/hotlist', controller.destination.desHotlist)
+  //删除目的地信息
+  router.delete('/api/des/hotlist/:id', controller.destination.deleteDesHotlist)
+  //添加目的地信息
+  router.post('/api/des/hotlist', controller.destination.addDesHotlist)
 
   //获取某个用户的景点信息
   router.get('/api/order/des/:userid', controller.index.getUserDes)
+    //获取全部用户的景点信息
+  router.get('/api/order/des', controller.index.getUserDes)
 
-
+  //获取全部用户信息
+  router.get('/api/user', controller.user.user)
   //预订景点
   router.post('/api/order/des', controller.index.orderDes)
   //登录
   router.post('/api/login', controller.index.login)
   //注册
   router.post('/api/regist', controller.index.regist)
-
 }

@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import {Layout, Row, Col, Input, message, Card}  from 'antd'
 import Header from '../../common/header/index'
 import './style.css'
+import { desListUrl } from '../../config/index'
 const { Meta } = Card
 const {Content} = Layout
 const {Search} = Input
@@ -20,11 +21,10 @@ class Destination extends React.Component {
 
   componentDidMount() {
     this.getHotDesList()
-    // this.getEuropeList()
   }
 
   getHotDesList() {
-    axios.get('http://127.0.0.1:7001/api/des/hotlist')
+    axios.get(desListUrl)
       .then(res => {
         const hotDes = []
         const europeDes = []
