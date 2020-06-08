@@ -6,6 +6,7 @@ import { Row, Col, Button, Carousel, Tabs, Affix} from 'antd'
 import { FormOutlined } from '@ant-design/icons'
 import Header from '../../common/header/index'
 import JiebanList from './jieban'
+import {  userMessageUrl } from '../../config/index'
 const { TabPane } = Tabs
 
 class Bbs extends Component  {
@@ -20,7 +21,7 @@ class Bbs extends Component  {
     this.getMessageBoard()
   }
   getMessageBoard () {
-    axios.get('http://127.0.0.1:7001/api/message')
+    axios.get(userMessageUrl)
     .then(res => {
       console.log(res.data)
       const jiebanlist = []
@@ -32,6 +33,7 @@ class Bbs extends Component  {
           liuyanlist.push(item)
         }
       })
+      console.log(liuyanlist)
       this.setState({
         jiebanlist,
         liuyanlist
@@ -100,7 +102,7 @@ class Bbs extends Component  {
                 }
                 key="1"
               >
-                Tab 1
+                <JiebanList list={this.state.liuyanlist}/>
               </TabPane>
               <TabPane
                 tab={
@@ -110,7 +112,7 @@ class Bbs extends Component  {
                 }
                 key="2"
               >
-                <JiebanList list={this.state.jiebanlist}/>
+                <JiebanList isjieban={true} list={this.state.jiebanlist}/>
               </TabPane>
             </Tabs>
           </Col>

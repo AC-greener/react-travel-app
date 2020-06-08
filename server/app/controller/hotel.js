@@ -28,7 +28,7 @@ class HotelController extends Controller {
   async deleteHotelList() {
     const { ctx } = this
     const data = await this.app.mysql.delete('hotellist', {
-      id: ctx.params.hotelid
+      id: ctx.params.id
     })
     console.log('删除成功')
     ctx.body = data
@@ -37,7 +37,7 @@ class HotelController extends Controller {
   async addHotelList() {
     const { ctx } = this
     const data = await this.app.mysql.insert('hotellist', ctx.request.body)
-    console.log('添加assssssssssssssss成功11')
+    console.log('添加成功11')
     ctx.body = data
   }
   async getUserHotel() {

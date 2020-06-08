@@ -27,7 +27,7 @@ module.exports = async (app) => {
   //添加酒店
   router.post('/api/hotellist', controller.hotel.addHotelList)
   //删除某个酒店
-  router.delete('/api/hotellist/:hotelid', controller.hotel.deleteHotelList)
+  router.delete('/api/hotellist/:id', controller.hotel.deleteHotelList)
   //预订酒店
   router.post('/api/order/hotel', controller.hotel.orderHotel)
   //获取某个用户的酒店信息

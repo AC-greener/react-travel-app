@@ -65,22 +65,12 @@ class Dashboard extends React.Component {
         align: 'center'
       },
       {
-        title: '操作',
-        key: 'action',
-        align: 'center',
-        render: (text, record) => (
-          <span>
-            <Button type="primary"onClick={() => {}}>删除</Button>
-          </span>
-        ),
-      },
-      {
         title: '设置为管理员',
         key: 'set',
         align: 'center',
         render: (text, record) => (
           <span>
-            <Switch defaultChecked onChange={() => {}} />
+            <Switch defaultChecked={record.isadmin === '是' ? true : false} onChange={() => {}} />
          </span>
         ),
       },

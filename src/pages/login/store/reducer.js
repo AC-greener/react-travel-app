@@ -1,7 +1,7 @@
 const defaultState = {
   isLogin: false,
-  username: '',
-  id: 0
+  username: 'admin',
+  id: 5
 }
 
 export default (state = defaultState, action) => {

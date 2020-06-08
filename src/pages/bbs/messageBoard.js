@@ -3,6 +3,8 @@ import './style.css'
 import fromBorder from '../../static/formBorder.png'
 import {  Col, Switch, Button, Form, Input, DatePicker, message} from 'antd'
 import axios from 'axios'
+import {  userMessageUrl } from '../../config/index'
+import { connect } from 'react-redux'
 
 const layout = {
   labelCol: {
@@ -26,7 +28,7 @@ class MessageBoard extends React.Component  {
     })
   }
   postMeaageBoard(values) {
-    axios.post('http://127.0.0.1:7002/api/message', values)
+    axios.post(userMessageUrl, values)
     .then(res => {
       message.success('提交成功！')
       console.log(res)
@@ -39,6 +41,8 @@ class MessageBoard extends React.Component  {
     e.preventDefault()
     this.props.form.validateFields((err, values) => {
       if (!err) {
+        values.username = this.props.username
+        values.userid = this.props.userid
         console.log('Received values of form: ', values)
         // console.log(values.startday.toString())
         // values.startday = values.startday.toString()
@@ -60,16 +64,6 @@ class MessageBoard extends React.Component  {
             <Form className='bbs-form' 
               onSubmit={this.handleSubmit}
               {...layout} name="basic"  >
-              <Form.Item
-                name='username'
-                label="您的大1名"
-              >
-                {getFieldDecorator('username', {
-                  rules: [{ required: true, message: ' ' }],
-                })(
-                  <Input style={{width: '280px'}}/>,
-                )}
-              </Form.Item>
               <Form.Item
                 name="email"
                 label="邮箱"
@@ -135,5 +129,11 @@ class MessageBoard extends React.Component  {
     )
   }
 }
+const  mapStateToProps = (state) => {
+  return {
+    username: state.get('login').username,
+    userid: state.get('login').id,
+  }
+}
 MessageBoard= Form.create({})(MessageBoard)
-export default MessageBoard
+export default connect(mapStateToProps)(MessageBoard)

@@ -21,6 +21,9 @@ import HotelOrderAdmin from './pages/admin/hotelorder'
 import DesOrderAdmin from './pages/admin/desorder'
 import MessageAdmin from './pages/admin/message'
 import DesAdmin from './pages/admin/desinfo'
+import HotelAdmin from './pages/admin/hotelinfo'
+
+
 import store from './store/index'
 const App = () => {
   return (
@@ -45,10 +48,11 @@ const App = () => {
           <Route path='/admin/desorder' exact component={ DesOrderAdmin }></Route>
           <Route path='/admin/message' exact component={ MessageAdmin }></Route>
           <Route path='/admin/des' exact component={ DesAdmin }></Route>
+          <Route path='/admin/hotel' exact component={ HotelAdmin }></Route>
         </div>
       </BrowserRouter>
     </Provider>
-  );
+  )
 }
 
 export default App;

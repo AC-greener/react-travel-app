@@ -76,21 +76,26 @@ const Content = ({ children, extraContent }) => {
                   <Paragraph>
                     {item.content}
                   </Paragraph>
-                  <Row gutter={16} style={{marginBottom: '15px'}}>
-                    <Col span={8} gutter={2}>
-                      出发时间 &nbsp;
-                      <svg style={{width: '16px', hright: '16px'}} className="icon" aria-hidden="true">
-                          <use xlinkHref="#icon-shijian"></use>
-                      </svg>&nbsp;: &nbsp;
-                      {item.startday.slice(0, 10)}</Col>
-                    <Col span={8}>
-                      地点 &nbsp;
-                      <svg style={{width: '16px', hright: '16px'}} className="icon" aria-hidden="true">
-                          <use xlinkHref="#icon-weizhi"></use>
-                      </svg>&nbsp;: &nbsp;
-                      { item.startlocation }
-                    </Col>
-                  </Row>
+                  {
+                  this.props.isjieban ?
+                    <Row gutter={16} style={{marginBottom: '15px'}}>
+                      <Col span={8} gutter={2}>
+                        出发时间 &nbsp;
+                        <svg style={{width: '16px', hright: '16px'}} className="icon" aria-hidden="true">
+                            <use xlinkHref="#icon-shijian"></use>
+                        </svg>&nbsp;: &nbsp;
+                        {new Date(item.startday).toLocaleDateString()}</Col>
+                      <Col span={8}>
+                        地点 &nbsp;
+                        <svg style={{width: '16px', hright: '16px'}} className="icon" aria-hidden="true">
+                            <use xlinkHref="#icon-weizhi"></use>
+                        </svg>&nbsp;: &nbsp;
+                        { item.startlocation }
+                      </Col>
+                    </Row>
+                  : <></>
+                }
+
                   <Row className="contentLink" type="flex">
                     <a
                       onClick={() => {this.showComment()}}
@@ -134,7 +139,7 @@ const Content = ({ children, extraContent }) => {
                     </Form.Item>
                     <Form.Item style={{marginTop: '-21px'}}>
                       <Button className='submit' type="primary" htmlType="submit">
-                        发布
+                        回复
                       </Button>
                     </Form.Item>
                   </Form>
