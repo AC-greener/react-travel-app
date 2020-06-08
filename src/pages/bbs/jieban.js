@@ -1,6 +1,9 @@
 import React from 'react'
-import { PageHeader,  Col, Tag, Typography, Row, Form, Input, Button } from 'antd'
+import { PageHeader,  Col, Tag, Typography, Row, Form, Input, Button, Avatar,message } from 'antd'
 import axios from 'axios'
+import './style.css'
+import { replyUrl } from '../../config/index'
+import {connect} from 'react-redux'
 const { Paragraph } = Typography
 
 const Content = ({ children, extraContent }) => {
@@ -23,7 +26,6 @@ const Content = ({ children, extraContent }) => {
  class JiebanList extends React.Component {
   constructor(props) {
     super(props)
-    console.log(props)
     this.state = {
       showComment: false
     }
@@ -39,16 +41,19 @@ const Content = ({ children, extraContent }) => {
     e.preventDefault()
     this.props.form.validateFields((err, values) => {
       if (!err) {
+        console.log(id)
         values.fromid = id
+        values.username = this.props.username
+        values.userid = this.props.userid
         console.log('Received values of form: ', values)
         this.postMeaageBoard(values)
       }
     })
   }
   postMeaageBoard(values) {
-    axios.post('http://127.0.0.1:7002/api/reply', values)
+    axios.post(replyUrl, values)
       .then(res => {
-        console.log('回复成功')
+        message.success('留言成功!')
       })
       .catch(err => {
         console.log(err)
@@ -67,9 +72,8 @@ const Content = ({ children, extraContent }) => {
               style={{
                 border: '1px solid rgb(235, 237, 240)',
               }}
-              // subTitle="This is a subtitle"
               tags={<Tag color="blue">Running</Tag>}
-              avatar={{ src: 'https://avatars1.githubusercontent.com/u/8186664?s=460&v=4' }}
+              avatar={{ src: '/static/avatar-person3.jpg' }}
             >
               <Content>
                 <div className="content">
@@ -95,7 +99,6 @@ const Content = ({ children, extraContent }) => {
                     </Row>
                   : <></>
                 }
-
                   <Row className="contentLink" type="flex">
                     <a
                       onClick={() => {this.showComment()}}
@@ -124,13 +127,27 @@ const Content = ({ children, extraContent }) => {
                   {/* {
                     this.state.showComment ? 1 : 2
                   } */}
+                  {
+                    item.reply.map((message, index2) => {
+                      return (
+                        <Row key={index2} className='reply-wrapper'>
+                          <div className='username'>
+                          <Avatar style={{marginBottom: '6px'}} src="/static/avatar-person.jpg" />&nbsp;&nbsp;
+                            { message.username }
+                          </div>
+                          <div>
+                            <span>回复 {item.username} : </span>
+                            <span>{message.content}</span>
+                          </div>
+                        </Row>
+                      )
+                    })
+                  }
                   <Row>
                   <Form style={{ paddingTop: '20px'}}
                     onSubmit={(e) => {this.handleSubmit(e, item.id)}}
                     name="basic"  >
-                    <Form.Item 
-                      // name='content'
-                    >
+                    <Form.Item>
                       { getFieldDecorator('content', {
                         rules: [{ required: true, message: ' ' }],
                         })(
@@ -155,7 +172,13 @@ const Content = ({ children, extraContent }) => {
     )
   }
 }
+const mapStateToProps = (state) => {
+  return {
+    username: state.get('login').username,
+    userid: state.get('login').id
+  }
+}
 JiebanList = Form.create({})(JiebanList)
-export default JiebanList
+export default connect(mapStateToProps)(JiebanList)
 
  

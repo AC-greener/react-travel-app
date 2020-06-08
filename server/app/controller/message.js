@@ -20,7 +20,7 @@ class MessageController extends Controller {
   }
   async getreply() {
     const { ctx } = this
-    const data = await this.app.mysql.select('messageboard')
+    const data = await this.app.mysql.select('reply')
     ctx.body = data
   }
   async postreply() {

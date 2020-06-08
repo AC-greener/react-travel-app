@@ -6,34 +6,40 @@ import { Row, Col, Button, Carousel, Tabs, Affix} from 'antd'
 import { FormOutlined } from '@ant-design/icons'
 import Header from '../../common/header/index'
 import JiebanList from './jieban'
-import {  userMessageUrl } from '../../config/index'
+import {  userMessageUrl, replyUrl } from '../../config/index'
 const { TabPane } = Tabs
 
 class Bbs extends Component  {
   constructor (props) {
     super(props)
     this.state = {
+      replyMessage: [],
       jiebanlist: [],
       liuyanlist: []
     }
   }
   componentDidMount() {
-    this.getMessageBoard()
+    this.getReply()
   }
-  getMessageBoard () {
+  getMessageBoard (replyData) {
     axios.get(userMessageUrl)
     .then(res => {
-      console.log(res.data)
       const jiebanlist = []
       const liuyanlist = []
       res.data.forEach(item => {
+        item.reply = []
+        replyData.forEach(replymessage => {
+          if(replymessage.fromid === item.id) {
+            item.reply.push(replymessage)
+          }
+        })
         if (item.iscompanion) {
           jiebanlist.push(item)
         } else {
           liuyanlist.push(item)
         }
       })
-      console.log(liuyanlist)
+      console.log(jiebanlist)
       this.setState({
         jiebanlist,
         liuyanlist
@@ -43,6 +49,20 @@ class Bbs extends Component  {
       console.log(err)
     })
   }
+  getReply () {
+    axios.get(replyUrl)
+    .then(res => {
+      console.log(res.data)
+      this.setState({
+        replyMessage: res.data
+      })
+      this.getMessageBoard(res.data)
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  }
+
   render () {
     return (
       <div>
