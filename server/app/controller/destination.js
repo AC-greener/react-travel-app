@@ -21,12 +21,13 @@ class DestinationController extends Controller {
   }
   async deleteDesHotlist() {
     const { ctx } = this
+    console.log(ctx.params.id)
     const data = await this.app.mysql.delete('hotdeslist', {
       id: ctx.params.id
     })
     console.log('删除成功')
 
-    ctx.body = data
+    ctx.body = 'ok'
   }
 }
 module.exports = DestinationController

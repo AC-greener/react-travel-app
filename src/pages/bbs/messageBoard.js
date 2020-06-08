@@ -62,7 +62,7 @@ class MessageBoard extends React.Component  {
               {...layout} name="basic"  >
               <Form.Item
                 name='username'
-                label="您的大名"
+                label="您的大1名"
               >
                 {getFieldDecorator('username', {
                   rules: [{ required: true, message: ' ' }],

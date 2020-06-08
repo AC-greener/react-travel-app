@@ -17,8 +17,9 @@
 }
 .dashboard  .ant-layout-sider {
   position: relative;
+  min-height: 100vh;
 }
 .dashboard  .ant-layout-sider .ant-layout-sider-children{
-  height: 100vh;
   position: fixed;
+  height: 100vh;
 }

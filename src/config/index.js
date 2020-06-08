@@ -6,5 +6,5 @@ export const userHotelOrderUrl = `${BASEURL}/api/order/hotel/`
 export const hotelListUrl = `${BASEURL}/api/hotellist`
 export const spotListUrl = `${BASEURL}/api/spot/list`
 export const topicListUrl = `${BASEURL}/api/topic/list`
-export const desListUrl = `${BASEURL}/api/des/hotlist`
+export const desListUrl = `${BASEURL}/api/des/hotlist/`
 
