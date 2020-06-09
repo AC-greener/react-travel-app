@@ -1,11 +1,12 @@
 import React from 'react'
 import { Layout, Menu, Icon,message, Table,Switch  } from 'antd';
 import {userInfoUrl} from '../../config/index'
-import {Link} from 'react-router-dom'
+import {Link, Redirect} from 'react-router-dom'
 import axios from 'axios'
 import './style.css'
+import { connect } from 'react-redux'
 
-const { Header, Sider, Content, } = Layout;
+const { Header, Sider, Content, } = Layout
 
 class Dashboard extends React.Component {
   state = {
@@ -74,6 +75,7 @@ class Dashboard extends React.Component {
         ),
       },
     ]
+    if(this.props.islogin) {
     return (
       <Layout className='dashboard'>
         <Sider  trigger={null} collapsible collapsed={this.state.collapsed}>
@@ -138,7 +140,17 @@ class Dashboard extends React.Component {
         </Layout>
       </Layout>
     );
-  }
+    } else {
+      return (
+        <Redirect to='/admin/login'/> 
+      )
+    }
+}
 }
 
-export default Dashboard
+const mapStateToProps = (state) => {
+  return {
+    islogin: state.get('adminLogin').adminIsLogin
+  }
+}
+export default connect(mapStateToProps)(Dashboard)
