@@ -1,16 +1,16 @@
 const defaultState = {
-  isLogin: false,
-  username: '',
-  id: 0
+  adminIsLogin: false,
+  adminUsername: '',
+  adminId: 0
 }
 
 export default (state = defaultState, action) => {
   switch(action.type) {
-    case 'login':
+    case 'adminLogin':
       const newState = {
-        isLogin: true,
-        username: action.payload.username,
-        id: action.payload.id
+        adminIsLogin: true,
+        adminUsername: action.payload.username,
+        adminId: action.payload.id
       }
       return newState
     default:

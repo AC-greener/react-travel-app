@@ -22,7 +22,7 @@ import DesOrderAdmin from './pages/admin/desorder'
 import MessageAdmin from './pages/admin/message'
 import DesAdmin from './pages/admin/desinfo'
 import HotelAdmin from './pages/admin/hotelinfo'
-
+import AdminLogin from './pages/admin/login/index'
 
 import store from './store/index'
 const App = () => {
@@ -49,6 +49,7 @@ const App = () => {
           <Route path='/admin/message' exact component={ MessageAdmin }></Route>
           <Route path='/admin/des' exact component={ DesAdmin }></Route>
           <Route path='/admin/hotel' exact component={ HotelAdmin }></Route>
+          <Route path='/admin/login' exact component={ AdminLogin }></Route>
         </div>
       </BrowserRouter>
     </Provider>
