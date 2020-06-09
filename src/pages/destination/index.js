@@ -15,7 +15,10 @@ class Destination extends React.Component {
     super(props)
     this.state = {
       hotDes: [],
-      europeDes: []
+      europeDes: [],
+      allDes: [],
+      keyWordDes: [],
+      show: true
     }
   }
 
@@ -37,15 +40,34 @@ class Destination extends React.Component {
         })
         this.setState({
           hotDes: hotDes,
-          europeDes: europeDes
+          europeDes: europeDes,
+          allDes: res.data
         })
-        console.log(this.state)
       })
       .catch(err => {
         message.error(err)
       })
   }
-
+  search(keyword) {
+    this.setState({
+      show: false
+    })
+    if(!keyword) {
+      this.setState({
+        keyWordDes: this.state.allDes
+      })
+      return
+    }
+    const data = []
+    this.state.allDes.forEach(item => {
+      if (item.desc.indexOf(keyword) !== -1) {
+        data.push(item)
+      }
+    })
+    this.setState({
+      keyWordDes: data
+    })
+  }
   render () {
     return (
       <Layout className='desti-layout'>
@@ -61,68 +83,101 @@ class Destination extends React.Component {
               <Search
                 className='input-search'
                 placeholder="搜索国家、城市、目的地"
-                onSearch={value => console.log(value)}
-                style={{  }}
+                onSearch={(keyword) => {this.search(keyword)}}
               />
               </div>
             </Col>
           </Row>
-          <h1 style={{ fontSize: '32px', textAlign: 'center', margin: '25px'}}>热门目的地</h1>
-          <Row  style={{ padding: '0 160px'}} justify="space-around" gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
-            {
-              this.state.hotDes.map((item, index) => {
-                return (
-                  <Col className="gutter-row" span={6} key={index}>
-                    <div className='card-wrapper'>
-                      <Link to={'/desti/detail/' + item.id}>
-                        <Card
-                          hoverable
-                          style={{ width: 300 }}
-                          cover={<img alt="example" src={item.imgUrl} />}
-                        >
-                          <Meta  description={item.desc} />
-                          <div className='price'>
-                            <em>
-                              {item.price}
-                            </em>
-                            元起
-                          </div>
-                        </Card>
-                      </Link>
-                    </div>
-                  </Col>
-                )
-              })
-            }
-          </Row>
-          <h1 style={{ fontSize: '32px', textAlign: 'center', margin: '25px'}}>欧洲</h1>
-          <Row  style={{ padding: '0 160px'}} justify="space-around" gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
-            {
-              this.state.europeDes.map((item, index) => {
-                return (
-                  <Col className="gutter-row" span={6} key={index}>
-                    <div className='card-wrapper'>
-                      <Link to={'/desti/detail/' + item.id}>
-                        <Card
-                          hoverable
-                          style={{ width: 300 }}
-                          cover={<img alt="example" src={item.imgUrl} />}
-                        >
-                          <Meta  description={item.desc} />
-                          <div className='price'>
-                            <em>
-                              {item.price}
-                            </em>
-                            元起
-                          </div>
-                        </Card>
-                      </Link>
-                    </div>
-                  </Col>
-                )
-              })
-            }
-          </Row>
+          {
+            this.state.show ? 
+            <div>
+            <h1 style={{ fontSize: '32px', textAlign: 'center', margin: '25px'}}>热门目的地</h1>
+            <Row  style={{ padding: '0 160px'}} justify="space-around" gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
+              {
+                this.state.hotDes.map((item, index) => {
+                  return (
+                    <Col className="gutter-row" span={6} key={index}>
+                      <div className='card-wrapper'>
+                        <Link to={'/desti/detail/' + item.id}>
+                          <Card
+                            hoverable
+                            style={{ width: 300 }}
+                            cover={<img alt="example" src={item.imgUrl} />}
+                          >
+                            <Meta  description={item.desc} />
+                            <div className='price'>
+                              <em>
+                                {item.price}
+                              </em>
+                              元起
+                            </div>
+                          </Card>
+                        </Link>
+                      </div>
+                    </Col>
+                  )
+                })
+              }
+            </Row>
+            <h1 style={{ fontSize: '32px', textAlign: 'center', margin: '25px'}}>欧洲</h1>
+            <Row  style={{ padding: '0 160px'}} justify="space-around" gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
+
+              {
+                this.state.europeDes.map((item, index) => {
+                  return (
+                    <Col className="gutter-row" span={6} key={index}>
+                      <div className='card-wrapper'>
+                        <Link to={'/desti/detail/' + item.id}>
+                          <Card
+                            hoverable
+                            style={{ width: 300 }}
+                            cover={<img alt="example" src={item.imgUrl} />}
+                          >
+                            <Meta  description={item.desc} />
+                            <div className='price'>
+                              <em>
+                                {item.price}
+                              </em>
+                              元起
+                            </div>
+                          </Card>
+                        </Link>
+                      </div>
+                    </Col>
+                  )
+                })
+              }
+            </Row>
+            </div>
+              :
+            <Row  style={{ padding: '0 160px'}} justify="space-around" gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
+              {
+                this.state.keyWordDes.map((item, index) => {
+                  return (
+                    <Col className="gutter-row" span={6} key={index}>
+                      <div className='card-wrapper'>
+                        <Link to={'/desti/detail/' + item.id}>
+                          <Card
+                            hoverable
+                            style={{ width: 300 }}
+                            cover={<img alt="example" src={item.imgUrl} />}
+                          >
+                            <Meta  description={item.desc} />
+                            <div className='price'>
+                              <em>
+                                {item.price}
+                              </em>
+                              元起
+                            </div>
+                          </Card>
+                        </Link>
+                      </div>
+                    </Col>
+                  )
+                })
+              }
+            </Row>
+          }
         </Content>
       </Layout>
     )
