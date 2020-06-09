@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link } from "react-router-dom"
 import { connect } from 'react-redux'
 import './style.css'
-import { Layout, Menu, Avatar, Icon } from 'antd'
+import { Layout, Menu, Avatar } from 'antd'
 const { Header } = Layout
 
 class Heade extends Component  {
@@ -74,9 +74,7 @@ class Heade extends Component  {
 const mapStateToProps = (state) => {
   return {
     login: state.get('login').isLogin,
-    // login: true,
-    username: 'admin'
-    // username: state.get('login').username
+    username: state.get('login').username
   }
 }
 export default connect(mapStateToProps)(Heade)

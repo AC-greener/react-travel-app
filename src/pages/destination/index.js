@@ -53,7 +53,7 @@ class Destination extends React.Component {
         <Content style={{marginTop: '50px'}}>
           <Row style={{position: 'relative'}} >
             <Col span={24}>
-              <img style={{width: '100vw', height: '600px'}} src='/static/destination-bg.jpg'></img>
+              <img style={{width: '100vw', height: '600px'}} src='/static/destination-bg.jpg' alt='img'></img>
             </Col>
             <Col offset={6} span={12} className='search-wrapper'>
               <div className='title-box'>你好, 世界！</div>

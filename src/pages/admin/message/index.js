@@ -1,8 +1,7 @@
 import React from 'react'
-import { Layout, Menu, Icon,message,Button, Table,Switch  } from 'antd';
+import { Layout, Menu, Icon,message,Button, Table } from 'antd';
 import { userMessageUrl } from '../../../config/index'
 import { Link } from 'react-router-dom'
-import { connect } from 'react-redux'
 import axios from 'axios'
 
 const { Header, Sider, Content, } = Layout;

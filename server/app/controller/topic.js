@@ -15,13 +15,11 @@ class TopicController extends Controller {
     const data = await this.app.mysql.delete('hottopiclist', {
       id: ctx.params.id
     })
-    console.log('删除成功')
     ctx.body = data
   }
   async addTopicList() {
     const { ctx } = this
     const data = await this.app.mysql.insert('hottopiclist', ctx.request.body)
-    console.log('添加成功')
     ctx.body = data
   }
 

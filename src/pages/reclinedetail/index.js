@@ -74,14 +74,6 @@ class RecLineDetail extends Component  {
       })
     }
     store.dispatch (action)
-  // axios.get('http://127.0.0.1:7001/')
-  //   .then(res => {
-  //     console.log(typeof res.data[0].data)
-  //     console.log(JSON.parse(res.data[0].data)[0])
-  //   })
-  //   .catch(err => {
-  //     console.log(err)
-  //   })
   }
   render () {
     let text = ''

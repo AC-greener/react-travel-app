@@ -15,7 +15,6 @@ class IndexController extends Controller {
       password: ctx.request.body.password
     })
     if(data) {
-      console.log('登录成功')
       ctx.body = { data }
     } else {
       ctx.body = { data: 0 }
@@ -38,10 +37,8 @@ class IndexController extends Controller {
 
   async orderDes() {
     const { ctx } = this
-    console.log(ctx.request.body)
     ctx.request.body.createdtime = new Date()
     await this.app.mysql.insert('orderdes', ctx.request.body)
-    console.log('插入成功')
     ctx.body = {
       data: 'ok'
     }
@@ -49,10 +46,9 @@ class IndexController extends Controller {
  
   async getUserDes() {
     const { ctx } = this
-    console.log(ctx.params.userid)
     if(ctx.params.userid) {
       const data = await this.app.mysql.select('orderdes', {
-        // userid: ctx.params.userid,
+        where: {userid: ctx.params.userid}
       })
       ctx.body = data
     } else {

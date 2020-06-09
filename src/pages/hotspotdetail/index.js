@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import {Layout, Row, Col, Icon, Typography, PageHeader, Tabs, Tag, message} from 'antd'
+import {Layout, Row, Col, Icon, Typography, PageHeader, Tabs,message} from 'antd'
 import Header from '../../common/header/index'
 import './style.css'
 
@@ -26,9 +26,6 @@ const PageContent = ({ children, extraContent }) => {
 }
 
 class HotSpotDetail extends React.Component {
-  constructor(props) {
-    super(props)
-  }
   getSpotDetail () {
     axios.get('/spotdetail.json')
       .then(res => {
@@ -143,7 +140,7 @@ class HotSpotDetail extends React.Component {
             <Col style={{padding: '65px'}}   span={12} offset={4}>
               <Row>
                 <Col span={12}>
-                  <img src={imgUrl}></img>
+                  <img src={imgUrl} alt='img'></img>
                 </Col>
                 <Col span={12}>
                   <div style={{fontSize:'27px', color: '#147850'}}>{score}分</div>

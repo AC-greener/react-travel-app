@@ -1,7 +1,6 @@
 import React from 'react'
 import { Layout, Menu, Icon,message,Button, Table, Form, Input,  Select  } from 'antd';
 import {Link} from 'react-router-dom'
-import {connect} from 'react-redux'
 import axios from 'axios'
 import { hotelListUrl } from '../../../config/index'
 const { Header, Sider, Content, } = Layout

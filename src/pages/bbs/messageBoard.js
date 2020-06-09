@@ -44,8 +44,6 @@ class MessageBoard extends React.Component  {
         values.username = this.props.username
         values.userid = this.props.userid
         console.log('Received values of form: ', values)
-        // console.log(values.startday.toString())
-        // values.startday = values.startday.toString()
         this.postMeaageBoard( values)
       }
     })

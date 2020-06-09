@@ -1,10 +1,9 @@
 import React from 'react'
 import { Layout, Menu, Icon,message,Button, Table, Form, Input,  Select  } from 'antd';
 import {Link} from 'react-router-dom'
-import {connect} from 'react-redux'
 import axios from 'axios'
 import { desListUrl } from '../../../config/index'
-const { Header, Sider, Content, } = Layout;
+const { Header, Sider, Content, } = Layout
 const { Option } = Select;
 const { TextArea } = Input;
 const layout = {

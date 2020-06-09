@@ -4,6 +4,7 @@ import 'antd/dist/antd.css';
 import './style.css'
 import { connect } from 'react-redux';
 import axios from 'axios'
+import { loginUrl } from '../../config/index'
 import {
   WeiboOutlined,
   WechatOutlined,
@@ -28,7 +29,7 @@ class Login extends Component {
     })
   }
   login(data) {
-    axios.post('http://127.0.0.1:7001/api/login', data)
+    axios.post(loginUrl, data)
     .then(res => {
       if(res.data.data === 0) {
         message.error('该用户不存在!')
@@ -121,7 +122,6 @@ const mapStateProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
       login(data) {
-        console.log(' mapDispatchToProps')
         dispatch({type: 'login', payload: data})
       }
   }

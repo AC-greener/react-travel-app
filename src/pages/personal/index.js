@@ -160,7 +160,7 @@ class Personal extends React.Component {
         <Content style={{marginTop: '50px'}}>
           <Row className='flex'>
             <Col style={{textAlign: 'center'}} span={16} >
-              <img className='bg-img' src='/static/personal-bg.png'></img>
+              <img className='bg-img' src='/static/personal-bg.png' alt='img'></img>
             </Col>
           </Row>
           <Row className='flex'>

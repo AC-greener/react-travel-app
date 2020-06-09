@@ -3,11 +3,12 @@ import './style.css'
 import Header from '../../common/header/index'
 import { Layout, Row, Col,Typography, PageHeader,  Table, Button, DatePicker, message,} from 'antd'
 import axios from 'axios'
-import moment from 'moment';
-
-const {  Content } = Layout;
+import moment from 'moment' 
+import { connect } from 'react-redux'
+import { userHotelOrderUrl, userHotelDetailUrl } from '../../config/index'
+const {  Content } = Layout 
 const { Paragraph } = Typography
-const { RangePicker,} = DatePicker;
+const { RangePicker } = DatePicker 
 const PageContent = ({ children, extraContent }) => {
   return (
     <Row className="content" type="flex">
@@ -23,10 +24,10 @@ const PageContent = ({ children, extraContent }) => {
         {extraContent}
       </div>
     </Row>
-  );
+  ) 
 }
 
-const dateFormat = 'YYYY/MM/DD';
+const dateFormat = 'YYYY/MM/DD' 
 class HotelDetail extends React.Component {
   constructor(props) {
     super(props)
@@ -49,7 +50,6 @@ class HotelDetail extends React.Component {
     })
   }
   orderHotel(data, text) {
-    console.log(data, )
     const hotelInfo = {}
     hotelInfo.hotelname = this.state.hotelDetail.hotelname
     hotelInfo.people = data.people+''
@@ -57,10 +57,10 @@ class HotelDetail extends React.Component {
     hotelInfo.roomtype = data.roomtype
     hotelInfo.starttime = data.time[0]
     hotelInfo.endtime = data.time[1]
-    hotelInfo.username = 'old zhang'
-    hotelInfo.userid = 2
+    hotelInfo.username = this.props.username
+    hotelInfo.userid = this.props.userid
     console.log(hotelInfo)
-    axios.post('http://127.0.0.1:7001/api/order/hotel', hotelInfo)
+    axios.post(userHotelOrderUrl, hotelInfo)
       .then(res => {
         message.success('预约成功')
         console.log(res)
@@ -70,7 +70,7 @@ class HotelDetail extends React.Component {
       })
   }
   getHotelDetail() {
-    axios.get('http://127.0.0.01:7001/api/hotel/detail')
+    axios.get(userHotelDetailUrl)
       .then(res => {
         this.setState({
           hotelDetail: res.data[0]
@@ -142,11 +142,11 @@ class HotelDetail extends React.Component {
         key: 'opera',
         render: (text, row) => (
           <div>
-            <Button onClick={() => this.orderHotel(row, text)}>立即预约</Button>
+            <Button type="primary" onClick={() => this.orderHotel(row, text)}>立即预约</Button>
           </div>
         ),
       },
-    ];
+    ] 
     
     const data = [
       {
@@ -216,7 +216,7 @@ class HotelDetail extends React.Component {
                       位置
                     <svg style={{width: '16px', hright: '16px'}} className="icon" aria-hidden="true">
                         <use xlinkHref="#icon-weizhi"></use>
-                    </svg>&nbsp;: &nbsp;
+                    </svg>&nbsp; : &nbsp;
                     {this.state.hotelDetail.location}
                   </Col>
                 </Row>
@@ -277,4 +277,10 @@ class HotelDetail extends React.Component {
       )
   }
 }
-export default HotelDetail
+const mapStateToProps = (state) => {
+  return {
+    username: state.get('login').username,
+    userid: state.get('login').id
+  }
+}
+export default connect(mapStateToProps)(HotelDetail)

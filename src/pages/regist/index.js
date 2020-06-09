@@ -4,6 +4,7 @@ import './style.css'
 import axios from 'axios'
 import { Link } from "react-router-dom"
 import { connect } from 'react-redux'
+import { registUrl } from '../../config/index'
 import {
   WeiboOutlined,
   WechatOutlined,
@@ -18,10 +19,10 @@ class Regist extends Component {
       if (!err) {
         this.login(values)
       }
-    });
-  };
+    })
+  }
   login(data) {
-    axios.post('http://127.0.0.1:7001/api/regist', data)
+    axios.post(registUrl, data)
       .then(res => {
         console.log(res.data)
         if(res.data.data === 0) {

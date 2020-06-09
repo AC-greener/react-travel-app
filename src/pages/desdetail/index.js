@@ -1,11 +1,10 @@
 import React from 'react'
-import {Layout, Row, Col, Button, Menu, Affix, Input, DatePicker, message} from 'antd'
+import {Layout, Row, Col, Button, Menu, Affix,  DatePicker, message} from 'antd'
 import {connect} from 'react-redux'
 import axios from 'axios'
 import './style.css'
 import Header from '../../common/header/index'
-
-const { SubMenu } = Menu;
+import { userDesOrderUrl } from '../../config/index'
 const {Content} = Layout
 
 class DesDetail extends React.Component {
@@ -124,7 +123,7 @@ class DesDetail extends React.Component {
       userid: this.props.userid
     }
     console.log(data)
-    axios.post('http://127.0.0.1:7001/api/order/des', data)
+    axios.post(userDesOrderUrl, data)
       .then(res=> {
         message.success('预定成功！')
       })

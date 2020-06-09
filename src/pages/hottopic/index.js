@@ -1,10 +1,10 @@
 import React from 'react'
 import './style.css'
 import Header from '../../common/header/index'
-import { Layout, Carousel, Row, Col,Typography, PageHeader, Affix, Button, Icon, message } from 'antd'
+import { Layout, Carousel, Row, Col, PageHeader, Affix, Icon, message } from 'antd'
 import axios from 'axios'
+import { topicDetailUrl } from '../../config/index'
 const { Content } = Layout
-const { Paragraph } = Typography
 const PageContent = ({ children, extraContent }) => {
   return (
     <Row className="content" type="flex">
@@ -40,7 +40,7 @@ class HotTopicDetail extends React.Component{
     this.getTopDetail()
   }
   getTopDetail(){
-    axios.get('http://127.0.0.1:7001/api/topic/detail')
+    axios.get(topicDetailUrl)
       .then(res => {
         const data = res.data[this.state.id]
         console.log(data)
