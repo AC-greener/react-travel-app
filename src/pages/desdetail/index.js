@@ -123,17 +123,21 @@ class DesDetail extends React.Component {
       userid: this.props.userid
     }
     console.log(data)
-    axios.post(userDesOrderUrl, data)
+
+    if(sessionStorage.getItem('islogin')) {
+      axios.post(userDesOrderUrl, data)
       .then(res=> {
         message.success('预定成功！')
       })
       .catch(err=> {
         message.error(err)
       })
+    } else {
+      message.error('请先登录！')
+    }
+
   }
   render() {
-
-   
     return (
       <Layout className='des-detail'>
         <Header activeNav="1" bbs={ true }/>

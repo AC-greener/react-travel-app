@@ -42,10 +42,10 @@ const Content = ({ children, extraContent }) => {
     this.props.form.validateFields((err, values) => {
       if (!err) {
         values.fromid = id
-        values.username = this.props.username
-        values.userid = this.props.userid
+        values.username = sessionStorage.getItem('username')
+        values.userid = sessionStorage.getItem('userid')
         console.log('Received values of form: ', values)
-        if(this.props.isLogin) {
+        if(sessionStorage.getItem('islogin')) {
           this.postMeaageBoard(values)
         } else {
           message.error('请先登录！')

@@ -60,7 +60,8 @@ class HotelDetail extends React.Component {
     hotelInfo.username = this.props.username
     hotelInfo.userid = this.props.userid
     console.log(hotelInfo)
-    axios.post(userHotelOrderUrl, hotelInfo)
+    if(sessionStorage.getItem('islogin')) {
+      axios.post(userHotelOrderUrl, hotelInfo)
       .then(res => {
         message.success('预约成功')
         console.log(res)
@@ -68,6 +69,9 @@ class HotelDetail extends React.Component {
       .catch(err => {
         console.log(err)
       })
+    } else {
+      message.error('请先登录！')
+    }
   }
   getHotelDetail() {
     axios.get(userHotelDetailUrl)
