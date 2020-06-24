@@ -41,8 +41,8 @@ class Bbs extends Component  {
       })
       console.log(jiebanlist)
       this.setState({
-        jiebanlist,
-        liuyanlist
+        jiebanlist: jiebanlist.reverse(),
+        liuyanlist: liuyanlist.reverse()
       })
     })
     .catch(err => {
@@ -98,16 +98,16 @@ class Bbs extends Component  {
         <Row>
           <Carousel className='bbs-carousel' autoplay>
             <div className='c1'>
-              <img src={require('../../static/bbs1.jpg')} alt='图片未加载'></img>
+              <img src='../../static/bbs1.jpg' alt='图片未加载'></img>
             </div>
             <div className='c2'>
-              <img src={require('../../static/bbs2.jpg')} alt='图片未加载'></img>
+              <img src='../../static/bbs2.jpg'  alt='图片未加载'></img>
             </div>
             <div className='c3'>
-              <img src={require('../../static/bbs3.jpg')} alt='图片未加载'></img>
+              <img src='../../static/bbs3.jpg'  alt='图片未加载'></img>
             </div>
             <div className='c4'>
-              <img src={require('../../static/bbs4.jpg')} alt='图片未加载'></img>
+              <img src='../../static/bbs4.jpg'  alt='图片未加载'></img>
             </div>
           </Carousel>
         </Row>

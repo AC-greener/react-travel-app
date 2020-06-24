@@ -43,12 +43,12 @@ class Heade extends Component  {
             线路推荐
             </Link>
           </Menu.Item>
-            { this.props.login ? 
+            { sessionStorage.getItem('islogin') ? 
               <Menu.Item  className="nav-person" key="7">
                 <Link to='/personal' style={{color: '#fff'}}>
                   <div>
                     <Avatar style={{marginBottom: '3px',marginRight: '5px', width: '27px', height: '27px'}} size='small' src='/static/avatar-person2.jpg' />
-                    <span style={{fontSize: '14px'}}>{this.props.username}</span>
+                    <span style={{fontSize: '14px'}}>{sessionStorage.getItem('username')}</span>
                   </div>
                 </Link>
             </Menu.Item> :
@@ -73,8 +73,8 @@ class Heade extends Component  {
 
 const mapStateToProps = (state) => {
   return {
-    login: state.get('login').isLogin,
-    username: state.get('login').username
+    // login: state.get('login').isLogin,
+    // username: state.get('login').username
   }
 }
 export default connect(mapStateToProps)(Heade)

@@ -79,7 +79,7 @@ class Personal extends React.Component {
   }
 
   getUserMessage() {
-    axios.get(userMessageUrl + this.props.userid)
+    axios.get(userMessageUrl + sessionStorage.getItem('userid'))
       .then(res => {
         res.data.forEach((item,index) => {
           res.data[index].createdtime = new Date(item.createdtime).toLocaleDateString()
@@ -94,7 +94,7 @@ class Personal extends React.Component {
   }
 
   getUserHotel() {
-    axios.get(userHotelOrderUrl+ this.props.userid)
+    axios.get(userHotelOrderUrl+ sessionStorage.getItem('userid'))
       .then(res => {
         this.setState({
           hotelData: res.data
@@ -106,7 +106,7 @@ class Personal extends React.Component {
   }
 
   getUserDes() {
-    axios.get(userDesOrderUrl + this.props.userid)
+    axios.get(userDesOrderUrl + sessionStorage.getItem('userid'))
       .then(res => {
         console.log(res.data)
         this.setState({

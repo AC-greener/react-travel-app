@@ -14,16 +14,16 @@ class Home extends Component  {
           <Header bbs={ true } />
           <Carousel  autoplay>
             <div>
-              <img src={require('../../static/c1.jpg')} alt='图片出错了'></img>
+              <img src='/static/c1.jpg' alt='图片出错了'></img>
             </div>
             <div>
-              <img src={require('../../static/c2.jpg')} alt='图片出错了'></img>
+              <img src='/static/c2.jpg' alt='图片出错了'></img>
             </div>
             <div>
-              <img src={require('../../static/c3.jpg')} alt='图片出错了'></img>
+              <img src='/static/c3.jpg' alt='图片出错了'></img>
             </div>
             <div>
-              <img src={require('../../static/c4.jpg')} alt='图片出错了'></img>
+              <img src='/static/c4.jpg' alt='图片出错了'></img>
             </div>
           </Carousel>
           <Content style={{ marginTop: '20px', padding: '0 50px'}}>

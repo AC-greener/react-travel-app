@@ -41,12 +41,15 @@ const Content = ({ children, extraContent }) => {
     e.preventDefault()
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        console.log(id)
         values.fromid = id
         values.username = this.props.username
         values.userid = this.props.userid
         console.log('Received values of form: ', values)
-        this.postMeaageBoard(values)
+        if(this.props.isLogin) {
+          this.postMeaageBoard(values)
+        } else {
+          message.error('请先登录！')
+        }
       }
     })
   }
@@ -58,6 +61,9 @@ const Content = ({ children, extraContent }) => {
       .catch(err => {
         console.log(err)
       })
+  }
+  handleTextChange(a, b) {
+    console.log(a, b)
   }
   render() {
     const { getFieldDecorator } = this.props.form
@@ -151,7 +157,7 @@ const Content = ({ children, extraContent }) => {
                       { getFieldDecorator('content', {
                         rules: [{ required: true, message: ' ' }],
                         })(
-                          <Input.TextArea rows={3}  style={{width: '440px'}}/>
+                          <Input.TextArea onChange={(e)=>{this.handleTextChange(e, index)}} rows={3}  style={{width: '440px'}}/>
                       )}
                     </Form.Item>
                     <Form.Item style={{marginTop: '-21px'}}>
@@ -175,7 +181,8 @@ const Content = ({ children, extraContent }) => {
 const mapStateToProps = (state) => {
   return {
     username: state.get('login').username,
-    userid: state.get('login').id
+    userid: state.get('login').id,
+    isLogin: state.get('login').isLogin,
   }
 }
 JiebanList = Form.create({})(JiebanList)

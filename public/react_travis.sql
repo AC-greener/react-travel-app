@@ -11,59 +11,48 @@
  Target Server Version : 50730
  File Encoding         : 65001
 
- Date: 25/05/2020 22:23:12
+ Date: 24/06/2020 12:40:17
 */
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 
 -- ----------------------------
--- Table structure for europedeslist
--- ----------------------------
-DROP TABLE IF EXISTS `europedeslist`;
-CREATE TABLE `europedeslist`  (
-  `imgUrl` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `desc` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `price` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of europedeslist
--- ----------------------------
-INSERT INTO `europedeslist` VALUES ('/static/europe-des-img1.jpg', '走近欧洲九寨沟 克罗地亚 十六湖国家公园一日游 可选斯普利特/特罗吉尔出发（电子票免打印）', '988');
-INSERT INTO `europedeslist` VALUES ('/static/europe-des-img2.jpg', '【古典文艺】欧洲法意瑞7日游 五渔村/勃朗峰/罗马/威尼斯 （巴黎往返）', '3569');
-INSERT INTO `europedeslist` VALUES ('/static/europe-des-img3.jpg', '【意大利+瑞士 甄选长线H】德国/意大利/瑞士11天10晚法兰克福上下（施华洛世奇水晶世界）', '2980');
-INSERT INTO `europedeslist` VALUES ('/static/europe-des-img4.jpg', '【东欧+瑞士 甄选长线C】德国/奥地利/捷克/斯洛伐克/匈牙利/瑞士9天8晚 音乐之都维也纳', '3188');
-INSERT INTO `europedeslist` VALUES ('/static/europe-des-img5.jpg', '【五周连爆！】瑞士因特拉肯到少女峰欧洲之巅（景观列车+星级酒店+中文导游）', '6999');
-INSERT INTO `europedeslist` VALUES ('/static/europe-des-img6.jpg', '享行 欧洲当地跟团游,东南西北欧多国家多日游 随时参团 巴士游 中文导游', '6478');
-INSERT INTO `europedeslist` VALUES ('/static/europe-des-img7.jpg', '（英国伦敦 碎片大厦免打印门票（登摘星塔/成为星星上的人/欧洲之巅/可选香槟套餐/扫码入园）', '3888');
-INSERT INTO `europedeslist` VALUES ('/static/europe-des-img8.jpg', '（【瑞士南法风情 慕尼黑上下】德国/瑞士/法国/意大利/摩纳哥 6天5晚 （浪漫蔚蓝海岸）', '6490');
-INSERT INTO `europedeslist` VALUES ('/static/europe-des-img9.jpg', '免签说走就走 塞尔维亚+波黑+黑山7日游（贝尔格莱德往返+探寻前南斯拉夫遗落的秘密尔）', '5499');
-INSERT INTO `europedeslist` VALUES ('/static/europe-des-img10.jpg', '自动确认全年开放 冰岛北部胡萨维克观鲸（免费提供北纬66度防寒服+全欧洲观鲸的好地方+赠送茶点)', '2399');
-INSERT INTO `europedeslist` VALUES ('/static/europe-des-img11.jpg', '西巴尔干-追寻南斯拉夫昔日风情 克罗地亚+波黑+黑山+塞尔维亚7日游（世界遗产莫斯塔尔）', '3588');
-INSERT INTO `europedeslist` VALUES ('/static/europe-des-img12.jpg', '【欧洲三国】深度意大利+法国+瑞士8日游 五渔村/勃朗峰/罗马（巴黎往返）', '7266');
-
--- ----------------------------
 -- Table structure for hotdeslist
 -- ----------------------------
 DROP TABLE IF EXISTS `hotdeslist`;
 CREATE TABLE `hotdeslist`  (
+  `type` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `imgUrl` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `desc` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `price` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+  `price` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 22 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of hotdeslist
 -- ----------------------------
-INSERT INTO `hotdeslist` VALUES ('/static/des-img1.jpg', '（五星，上海松江区）佘山世茂洲际酒店(世茂深坑酒店) InterContinental ', '1988');
-INSERT INTO `hotdeslist` VALUES ('/static/des-img2.jpg', '（ 酒店，南京）南京星空宿泡泡屋度假酒店 1晚 （ 双早+部分民宿公区免费体验）', '569');
-INSERT INTO `hotdeslist` VALUES ('/static/des-img3.jpg', '（五星，丽江）5折预售+两店通用+全年可用|丽江/奔子栏丽世酒店4晚 任选房型+早+下午茶+可拆分', '1980');
-INSERT INTO `hotdeslist` VALUES ('/static/des-img4.jpg', '（五星，丽江）【超值五折】丽江悦榕庄1/2晚 早+接/送机+下午茶+田园行', '1188');
-INSERT INTO `hotdeslist` VALUES ('/static/des-img5.jpg', '（奢华，北京）北京颐和安缦酒店2-3晚+含双早/茶道品饮+剪纸+风筝制作+颐和园专属通道', '7999');
-INSERT INTO `hotdeslist` VALUES ('/static/des-img6.jpg', '(豪华，杭州）千岛湖绿城度假酒店（3号楼湖景亲子套房1晚+3份自助早餐+骑行1小时骑行券）', '478');
-INSERT INTO `hotdeslist` VALUES ('/static/des-img7.jpg', '（奢华，杭州）浙江杭州西溪悦榕庄酒店1-2晚度假套餐+西湖行+自助餐', '2888');
-INSERT INTO `hotdeslist` VALUES ('/static/des-img8.jpg', '（五星，重庆）【五折抢】重庆柏联酒店二晚住宿抵用券 (含早餐券+接/送机+双人下午茶+温泉）', '2499');
+INSERT INTO `hotdeslist` VALUES ('hot', '/static/des-img1.jpg', '（五星，上海松江区）佘山世茂洲际酒店(世茂深坑酒店) InterContinental ', '1988', 1);
+INSERT INTO `hotdeslist` VALUES ('hot', '/static/des-img2.jpg', '（ 酒店，南京）南京星空宿泡泡屋度假酒店 1晚 （ 双早+部分民宿公区免费体验）', '569', 2);
+INSERT INTO `hotdeslist` VALUES ('hot', '/static/des-img3.jpg', '（五星，丽江）5折预售+两店通用+全年可用|丽江/奔子栏丽世酒店4晚 任选房型+早+下午茶+可拆分', '1980', 3);
+INSERT INTO `hotdeslist` VALUES ('hot', '/static/des-img4.jpg', '（五星，丽江）【超值五折】丽江悦榕庄1/2晚 早+接/送机+下午茶+田园行', '1188', 4);
+INSERT INTO `hotdeslist` VALUES ('hot', '/static/des-img5.jpg', '（奢华，北京）北京颐和安缦酒店2-3晚+含双早/茶道品饮+剪纸+风筝制作+颐和园专属通道', '7999', 5);
+INSERT INTO `hotdeslist` VALUES ('hot', '/static/des-img6.jpg', '(豪华，杭州）千岛湖绿城度假酒店（3号楼湖景亲子套房1晚+3份自助早餐+骑行1小时骑行券）', '478', 6);
+INSERT INTO `hotdeslist` VALUES ('hot', '/static/des-img7.jpg', '（奢华，杭州）浙江杭州西溪悦榕庄酒店1-2晚度假套餐+西湖行+自助餐', '2888', 7);
+INSERT INTO `hotdeslist` VALUES ('hot', '/static/des-img8.jpg', '（五星，重庆）【五折抢】重庆柏联酒店二晚住宿抵用券 (含早餐券+接/送机+双人下午茶+温泉）', '2499', 8);
+INSERT INTO `hotdeslist` VALUES ('europe', '/static/europe-des-img1.jpg', '走近欧洲九寨沟 克罗地亚 十六湖国家公园一日游 可选斯普利特/特罗吉尔出发（电子票免打印）', '988', 9);
+INSERT INTO `hotdeslist` VALUES ('europe', '/static/europe-des-img2.jpg', '【古典文艺】欧洲法意瑞7日游 五渔村/勃朗峰/罗马/威尼斯 （巴黎往返）', '3569', 10);
+INSERT INTO `hotdeslist` VALUES ('europe', '/static/europe-des-img3.jpg', '【意大利+瑞士 甄选长线H】德国/意大利/瑞士11天10晚法兰克福上下（施华洛世奇水晶世界）', '2980', 11);
+INSERT INTO `hotdeslist` VALUES ('europe', '/static/europe-des-img4.jpg', '【东欧+瑞士 甄选长线C】德国/奥地利/捷克/斯洛伐克/匈牙利/瑞士9天8晚 音乐之都维也纳', '3188', 12);
+INSERT INTO `hotdeslist` VALUES ('europe', '/static/europe-des-img5.jpg', '【五周连爆！】瑞士因特拉肯到少女峰欧洲之巅（景观列车+星级酒店+中文导游）', '6999', 13);
+INSERT INTO `hotdeslist` VALUES ('europe', '/static/europe-des-img6.jpg', '享行 欧洲当地跟团游,东南西北欧多国家多日游 随时参团 巴士游 中文导游', '6478', 14);
+INSERT INTO `hotdeslist` VALUES ('europe', '/static/europe-des-img7.jpg', '（英国伦敦 碎片大厦免打印门票（登摘星塔/成为星星上的人/欧洲之巅/可选香槟套餐/扫码入园）', '3888', 15);
+INSERT INTO `hotdeslist` VALUES ('europe', '/static/europe-des-img8.jpg', '（【瑞士南法风情 慕尼黑上下】德国/瑞士/法国/意大利/摩纳哥 6天5晚 （浪漫蔚蓝海岸）', '6490', 16);
+INSERT INTO `hotdeslist` VALUES ('europe', '/static/europe-des-img9.jpg', '免签说走就走 塞尔维亚+波黑+黑山7日游（贝尔格莱德往返+探寻前南斯拉夫遗落的秘密尔）', '5499', 17);
+INSERT INTO `hotdeslist` VALUES ('europe', '/static/europe-des-img10.jpg', '自动确认全年开放 冰岛北部胡萨维克观鲸（免费提供北纬66度防寒服+全欧洲观鲸的好地方+赠送茶点)', '2399', 18);
+INSERT INTO `hotdeslist` VALUES ('europe', '/static/europe-des-img11.jpg', '西巴尔干-追寻南斯拉夫昔日风情 克罗地亚+波黑+黑山+塞尔维亚7日游（世界遗产莫斯塔尔）', '3588', 19);
+INSERT INTO `hotdeslist` VALUES ('europe', '/static/europe-des-img12.jpg', '【欧洲三国】深度意大利+法国+瑞士8日游 五渔村/勃朗峰/罗马（巴黎往返）', '7266', 20);
 
 -- ----------------------------
 -- Table structure for hoteldetail
@@ -92,7 +81,7 @@ CREATE TABLE `hotellist`  (
   `price` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `imgUrl` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of hotellist
@@ -141,18 +130,46 @@ CREATE TABLE `messageboard`  (
   `email` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `content` longtext CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
   `startday` datetime(0) NULL DEFAULT NULL,
+  `userid` int(11) NULL DEFAULT NULL,
+  `createdtime` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of messageboard
 -- ----------------------------
-INSERT INTO `messageboard` VALUES (1, '老李', '西安', NULL, '1', '1', NULL);
-INSERT INTO `messageboard` VALUES (2, '老张', '北京', NULL, '15929774304@163.com', '冒个泡', NULL);
-INSERT INTO `messageboard` VALUES (3, '老王', '上海', NULL, '15929774304@163.com', '测试一下', NULL);
-INSERT INTO `messageboard` VALUES (4, '老赵', '陕西', NULL, '1', '1', NULL);
-INSERT INTO `messageboard` VALUES (5, '老朱', '大理', 1, '1', '一起去大理', '2020-05-20 12:42:07');
-INSERT INTO `messageboard` VALUES (6, '老she', '成都', 1, '1', '成都宽窄巷子走起来！', '2020-05-14 12:42:07');
+INSERT INTO `messageboard` VALUES (4, '老赵', '陕西', NULL, '1', '1', NULL, 3, NULL);
+INSERT INTO `messageboard` VALUES (5, '老朱', '大理', 1, '1', '一起去大理', '2020-05-20 12:42:07', 2, NULL);
+INSERT INTO `messageboard` VALUES (6, '老she', '成都', 1, '1', '成都宽窄巷子走起来！', '2020-05-14 12:42:07', 1, NULL);
+INSERT INTO `messageboard` VALUES (7, 'admin', '西安', 1, '1053673440@qq.com', '西安自驾游，感兴趣的给我留言', '2020-06-04 14:47:59', 5, '2020-06-08 14:48:22');
+INSERT INTO `messageboard` VALUES (8, 'admin', '青海', 1, '1053673440@qq.com', '有去青海的小伙伴吗，一起', '2020-06-04 14:47:59', 5, '2020-06-08 14:49:07');
+INSERT INTO `messageboard` VALUES (9, 'admin', '拉萨', 1, '1053673440@qq.com', '川藏线自驾游，三缺一', '2020-06-26 14:47:59', 5, '2020-06-08 14:50:19');
+INSERT INTO `messageboard` VALUES (10, 'admin', NULL, NULL, '1053673440@qq.com', '20200609 测试', NULL, 5, '2020-06-09 10:09:25');
+INSERT INTO `messageboard` VALUES (11, 'admin', '渭南', 1, '1053673440@qq.com', '20200609 测试', '2020-06-12 10:09:39', 5, '2020-06-09 10:09:42');
+
+-- ----------------------------
+-- Table structure for orderdes
+-- ----------------------------
+DROP TABLE IF EXISTS `orderdes`;
+CREATE TABLE `orderdes`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `userid` int(11) NULL DEFAULT NULL,
+  `createdtime` timestamp(6) NULL DEFAULT NULL,
+  `starttime` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
+  `price` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
+  `destation` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `username` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of orderdes
+-- ----------------------------
+INSERT INTO `orderdes` VALUES (1, 0, '2020-05-27 13:25:55.938000', '2020-05-08', '569', '（ 酒店，南京）南京星空宿泡泡屋度假酒店 1晚 ', '');
+INSERT INTO `orderdes` VALUES (2, 5, '2020-05-27 13:27:04.195000', '2020-05-19', '998', '走近欧洲九寨沟 克罗地亚 十六湖国家公园一日游 可选斯普利特/特罗吉尔出发（电子票免打印）', 'admin');
+INSERT INTO `orderdes` VALUES (3, 5, '2020-05-27 13:27:42.915000', '2020-05-19', '998', '走近欧洲九寨沟 克罗地亚 十六湖国家公园一日游 可选斯普利特/特罗吉尔出发（电子票免打印）', 'admin');
+INSERT INTO `orderdes` VALUES (4, 5, '2020-06-09 10:07:52.958000', '2020-06-04', '998', '走近欧洲九寨沟 克罗地亚 十六湖国家公园一日游 可选斯普利特/特罗吉尔出发（电子票免打印）', 'admin');
+INSERT INTO `orderdes` VALUES (5, 5, '2020-06-09 10:08:16.378000', '2020-06-27', '2980', '【意大利+瑞士 甄选长线H】德国/意大利/瑞士11天10晚法兰克福上下', 'admin');
 
 -- ----------------------------
 -- Table structure for orderhotel
@@ -170,17 +187,18 @@ CREATE TABLE `orderhotel`  (
   `people` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `createdtime` datetime(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of orderhotel
 -- ----------------------------
-INSERT INTO `orderhotel` VALUES (1, NULL, NULL, '北京和园国际青年客栈', '128', '单人间', '2020/06/01', '2020/06/21', '2', NULL);
-INSERT INTO `orderhotel` VALUES (2, NULL, NULL, '北京和园国际青年客栈', '218', '双人间', '2020/06/01', '2020/06/08', '2~3', NULL);
 INSERT INTO `orderhotel` VALUES (3, 2, 'old zhang', '北京和园国际青年客栈', '128', '单人间', '2020/06/01', '2020/06/21', '2', NULL);
 INSERT INTO `orderhotel` VALUES (4, 2, 'old zhang', '北京和园国际青年客栈', '128', '单人间', '2020/06/01', '2020/06/21', '2', '2020-05-22 10:58:11');
 INSERT INTO `orderhotel` VALUES (5, 2, 'old zhang', '北京和园国际青年客栈', '128', '单人间', '2020/06/01', '2020/06/21', '2', '2020-05-22 11:00:47');
 INSERT INTO `orderhotel` VALUES (6, 2, 'old zhang', '北京和园国际青年客栈', '128', '单人间', '2020/06/01', '2020/06/21', '2', '2020-05-25 10:38:53');
+INSERT INTO `orderhotel` VALUES (7, 2, 'old zhang', '北京和园国际青年客栈', '128', '单人间', '2020/06/01', '2020/06/21', '2', '2020-06-09 09:54:29');
+INSERT INTO `orderhotel` VALUES (12, 5, 'admin', '北京和园国际青年客栈', '128', '单人间', '2020/06/01', '2020/06/21', '2', '2020-06-09 10:04:50');
+INSERT INTO `orderhotel` VALUES (13, 5, 'admin', '北京和园国际青年客栈', '218', '双人间', '2020/06/01', '2020/06/08', '2~3', '2020-06-09 10:04:57');
 
 -- ----------------------------
 -- Table structure for posts
@@ -248,14 +266,19 @@ INSERT INTO `posts` VALUES ('1Hello World tongtong', NULL);
 DROP TABLE IF EXISTS `reply`;
 CREATE TABLE `reply`  (
   `fromid` int(11) NULL DEFAULT NULL,
-  `content` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+  `content` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `userid` int(11) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of reply
 -- ----------------------------
-INSERT INTO `reply` VALUES (5, 'woxizng');
-INSERT INTO `reply` VALUES (6, '一起走');
+INSERT INTO `reply` VALUES (5, 'woxizng', 1, '一笑而过', NULL);
+INSERT INTO `reply` VALUES (6, '一起走', 2, '渣渣辉', NULL);
+INSERT INTO `reply` VALUES (5, '具体景点都有什么呢？', 3, 'admin', 5);
 
 -- ----------------------------
 -- Table structure for spotlist
@@ -328,7 +351,7 @@ CREATE TABLE `user`  (
   `tel` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
   `isadmin` tinyint(4) NULL DEFAULT 0,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of user
@@ -337,5 +360,6 @@ INSERT INTO `user` VALUES (2, '老aaaa', '1', '1', 0);
 INSERT INTO `user` VALUES (3, '老马', '123456', '15929774304', 0);
 INSERT INTO `user` VALUES (4, '老马2', '123456', '15929774304', 0);
 INSERT INTO `user` VALUES (5, 'admin', 'admin', '15929774304', 1);
+INSERT INTO `user` VALUES (6, '山姆', '123456', '15929774304', 0);
 
 SET FOREIGN_KEY_CHECKS = 1;

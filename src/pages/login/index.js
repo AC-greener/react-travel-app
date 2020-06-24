@@ -36,6 +36,9 @@ class Login extends Component {
       } else {
         console.log(res.data.data)
         this.props.login(res.data.data)
+        sessionStorage.setItem('islogin', true) 
+        sessionStorage.setItem('username', res.data.data.username) 
+        sessionStorage.setItem('userid', res.data.data.id)
         message.success('登录成功,即将跳转到首页!', 1.5)
         setTimeout(() => {
           this.setState({redirect: true})

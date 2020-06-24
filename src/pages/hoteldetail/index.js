@@ -172,30 +172,30 @@ class HotelDetail extends React.Component {
         <Row style={{ margin: '50px 0 0 0', background: 'rgb(255, 255, 255)'}} gutter={12}>
           <Col  className='center'  span={10} offset={2}>
             <div style={{ textAlign: 'center'}}>
-              <img src={require('../../static/hotel-detail-1.jpg')} alt='example'></img>
+              <img src='/static/hotel-detail-1.jpg' alt='example'></img>
             </div>
           </Col>
           <Col  style={{marginLeft: '-16px'}}  span={5}>
             <Row className='center'>
               <div  >
-                <img src={require('../../static/hotel-detail-2.jpg')} alt='example'></img>
+                <img src='/static/hotel-detail-2.jpg' alt='example'></img>
               </div>
             </Row>
             <Row className='center'>
             <div>
-                <img src={require('../../static/hotel-detail-3.jpg')} alt='example'></img>
+                <img src='/static/hotel-detail-3.jpg' alt='example'></img>
               </div>
             </Row>
           </Col>
           <Col   span={5}>
             <Row className='center'>
               <div>
-                <img src={require('../../static/hotel-detail-4.jpg')} alt='example'></img>
+                <img src='/static/hotel-detail-4.jpg' alt='example'></img>
               </div>
             </Row>
             <Row className='center'>
             <div >
-                <img src={require('../../static/hotel-detail-5.jpg')} alt='example'></img>
+                <img src='/static/hotel-detail-5.jpg' alt='example'></img>
               </div>
             </Row>
           </Col>

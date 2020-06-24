@@ -110,7 +110,7 @@ class RecLineDetail extends Component  {
     }
     const DetailBg = (
       <Col className="detail-bg" span={22} offset={1}>
-        <img src={require(`../../static/reclinepage${index}.jpg`)} alt='图片未加载'></img>
+        <img src={`/static/reclinepage${index}.jpg`} alt='图片未加载'></img>
         <div className="intro">
           { text }
         </div>
